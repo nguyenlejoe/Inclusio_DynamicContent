@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 background-color: ${props=>props.bgcolor ? props.bgcolor : "#056571"};
-width: ${props=>props.width ? props.width : "84px"};
+max-width: ${props=>props.width ? props.width : "84px"};
 height: ${props=>props.height ? props.height : "25px"};
 border-radius: 30px;
 border: none;
@@ -12,31 +12,33 @@ align-items: center;
 color: white;
 font-size: 10px; //delete this later
 font-weight: bold; //delete this later
+padding-right: 1%;
 
 `;
 
 const Text = styled.div`
-position: relative;
-left: -10px;
+width: 100%;
 `;
 
-const IconBox = styled.img`
-width: 70%;
+const IconBox = styled.div`
+width: 40%;
 height: 70%;
-position: relative;
-left: -5px;
+background-image: ${props=>props.statusIcon ? props.statusIcon : "url('/complete.svg')"};
+background-size: 100% 100%;
+
 `;
 
-const StatusTag = ({width, height, statusText}) => {
-    return <Container><IconBox src="/complete.svg"></IconBox><Text>{statusText}</Text></Container>
+const StatusTag = ({statusText, statusIcon, bgcolor}) => {
+    return <Container bgcolor={bgcolor}>
+        <IconBox statusIcon={statusIcon}></IconBox><Text>{statusText}</Text>
+        </Container>
 
 }
 
 StatusTag.defaultProps = {
-width: null,
-height: null,
 bgcolor: "#056571",
-statusText: "Status"
+statusText: "Complete",
+statusIcon: "url('/complete.svg')"
 }
 
 export default StatusTag;
