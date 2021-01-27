@@ -4,15 +4,15 @@ import styled from 'styled-components';
 const Container = styled.div`
 background-color: ${props=>props.bgcolor ? props.bgcolor : "#056571"};
 max-width: ${props=>props.width ? props.width : "84px"};
-height: ${props=>props.height ? props.height : "25px"};
-border-radius: 30px;
+max-height: ${props=>props.height ? props.height : "21px"};
+border-radius: 100px;
 border: none;
 display: flex;
 align-items: center;
 color: white;
 font-size: 10px; //delete this later
 font-weight: bold; //delete this later
-padding-right: 1%;
+padding: 4px;
 
 `;
 
@@ -21,10 +21,11 @@ width: 100%;
 `;
 
 const IconBox = styled.div`
-width: 40%;
-height: 70%;
+min-width: 13px;
+min-height: 13px;
 background-image: ${props=>props.statusIcon ? props.statusIcon : "url('/complete.svg')"};
 background-size: 100% 100%;
+padding-right: 6px;
 
 `;
 
