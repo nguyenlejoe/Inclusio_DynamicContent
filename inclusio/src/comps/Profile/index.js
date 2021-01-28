@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import Status from 'comps/StatusTag';
+import {useHistory, Link} from "react-router-dom";
+
+const CompContainer = styled.div`
+
+`;
 
 const Container = styled.div`
 display:flex;
@@ -78,6 +84,7 @@ position:relative;
 right:${props=>props.right ? props.right : '0px'};
 transition: all 0.4s ease;
 
+min-height:100%;
 min-width:100px;
 background: #056571;
 z-index:-1;
@@ -99,51 +106,64 @@ z-index:-2;
 cursor:pointer;
 `;
 
-const Profile = ({img, name, pos, dep, spec, status}) => {
+//Default member
+let tmpMember = [
+    {
+        img: "https://picsum.photos/200",
+        name: "Name of Member",
+        pos: "Position",
+        dep: "Department",
+        spec: "Specialization",
+        status: "In Progress" ,
+    }
+]
+
+const Profile = ({members}) => {
     const [display, setDisplay] = useState(false);
 
     const HandleClicked = ()=>{
         setDisplay(!display)
     }
 
-    return <Container left={display === true ? '-200px' : '0px'}>
-        <ProfileCont>
-        <Content>
-            <Avatar src={img}/>
-            <Info>
-                <h3>{name}</h3>
-                <span><p>{name}</p></span>
-                <span><p>{pos}</p></span>
-                <span><p>{dep}</p></span>
-                <p>{spec}</p>
-                <p>{status}</p>
-            </Info>
-            <Expand onClick={HandleClicked}>
-            <img src={"expand.svg"}/>
-            </Expand>
-        </Content>
-        <Divider/>
-        </ProfileCont>
-        <Edit  onClick={()=>{
-            
-        }}
-        right={display === true ? '0px' : '100px'}>
-            <img src={"edit.svg"}/></Edit>
-        <Bin onClick={()=>{
+    return (
+        <CompContainer>
+            {members && members.map(o=> <Container left={display === true ? '-200px' : '0px'}>
+                <ProfileCont>
+                    <Content>
+                        <Avatar src={o.img}/>
+                        <Info>
+                            <h3>{o.name}</h3>
+                            <span><p>{o.name}</p></span>
+                            <span><p>{o.pos}</p></span>
+                            <span><p>{o.dep}</p></span>
+                            <p>{o.spec}</p>
+                            <Status statusText={o.status}/>
+                        </Info>
+                        <Expand onClick={HandleClicked}>
+                        <img src={"expand.svg"}/>
+                        </Expand>
+                    </Content>
+                    <Divider/>
+                </ProfileCont>
+                <Link style={{ textDecoration: 'none' }} to={{ pathname: "/EditMember", state: {o} }}>
+                    <Edit
+                        right={display === true ? '0px' : '100px'}>
+                            <img src={"edit.svg"}/>
+                    </Edit>
+                </Link>
+                <Bin onClick={()=>{
 
-        }}
-        right={display === true ? '0px' : '200px'}>
-            <img src={"bin.svg"}/></Bin>
-    </Container>
+                }}
+                right={display === true ? '0px' : '200px'}>
+                    <img src={"bin.svg"}/></Bin>
+        </Container>
+        )}
+    </CompContainer>
+    );
 }
 
 Profile.defaultProps = {
-img: "https://picsum.photos/200",
-name: "Name of Member",
-pos: "Position",
-dep: "Department",
-spec: "Specialization",
-status: "Status",
+    members: tmpMember
 }
 
 export default Profile
