@@ -6,6 +6,12 @@ function App() {
   return (
     <div className="App">
      Inclusio
+     <Profile/>
+     <Profile/>
+     <Profile/>
+     <Profile/>
+     <Profile/>
+     <Profile/>
     </div>
   );
 }

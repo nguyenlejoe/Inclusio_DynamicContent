@@ -5,14 +5,14 @@ const Container = styled.div`
 display:flex;
 position:relative;
 left:${props=>props.left ? props.left : '0px'};
-transition: all 0.3s ease;
+transition: all 0.4s ease;
 `;
 
 const ProfileCont = styled.div`
 display:flex;
 flex-direction: column;
 
-min-width:100vw;
+min-width:100%;
 // min-width:320px;
 // max-width:414px;
 min-height:100px;
@@ -40,6 +40,23 @@ padding:15px 40px 15px 15px ;
     const Info = styled.div`
     flex-grow:1;
     margin:0px 15px;
+    & > span{
+        display:none;
+    }
+    @media (min-width: 641px) {
+        display:flex;
+        justify-content:space-around;
+      }
+    @media (min-width:1008px) {
+    display:flex;
+    justify-content:space-around;
+    & > span{
+        display:flex;
+    }
+    & > h3{
+        display:none;
+    }
+    }
     `;
 
 const Divider = styled.div`
@@ -49,7 +66,7 @@ background: linear-gradient(90deg, #FFF 10%, #E0E0E0 30%, #E0E0E0 60%, #FFF 90%)
 `;
 
 const Expand = styled.div`
-
+cursor:pointer;
 `;
 
 const Edit = styled.div`
@@ -59,11 +76,12 @@ align-items:center;
 
 position:relative;
 right:${props=>props.right ? props.right : '0px'};
-transition: all 0.3s ease;
+transition: all 0.4s ease;
 
 min-width:100px;
 background: #056571;
 z-index:-1;
+cursor:pointer;
 `;
 
 const Bin = styled.div`
@@ -73,19 +91,19 @@ align-items:center;
 
 position:relative;
 right:${props=>props.right ? props.right : '0px'};
-transition: all 0.3s ease;
+transition: all 0.4s ease;
 
 min-width:100px;
 background: #FF7F11;
 z-index:-2;
+cursor:pointer;
 `;
 
-const Profile = ({img, name, spec, status}) => {
+const Profile = ({img, name, pos, dep, spec, status}) => {
     const [display, setDisplay] = useState(false);
 
     const HandleClicked = ()=>{
         setDisplay(!display)
-        console.log('working', display)
     }
 
     return <Container left={display === true ? '-200px' : '0px'}>
@@ -94,6 +112,9 @@ const Profile = ({img, name, spec, status}) => {
             <Avatar src={img}/>
             <Info>
                 <h3>{name}</h3>
+                <span><p>{name}</p></span>
+                <span><p>{pos}</p></span>
+                <span><p>{dep}</p></span>
                 <p>{spec}</p>
                 <p>{status}</p>
             </Info>
@@ -119,6 +140,8 @@ const Profile = ({img, name, spec, status}) => {
 Profile.defaultProps = {
 img: "https://picsum.photos/200",
 name: "Name of Member",
+pos: "Position",
+dep: "Department",
 spec: "Specialization",
 status: "Status",
 }
