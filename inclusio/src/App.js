@@ -1,7 +1,7 @@
 import './App.scss';
 import CategoryBar from './comps/CategoryBar';
-
 import Profile from './comps/Profile'
+import SearchBar from './comps/SearchBar'
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
 
      <CategoryBar></CategoryBar>
 
-     Inclusio
+     <SearchBar />
      <Profile/>
      <Profile/>
      <Profile/>
