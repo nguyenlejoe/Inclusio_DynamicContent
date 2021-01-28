@@ -1,22 +1,10 @@
 import './App.scss';
-import CategoryBar from './comps/CategoryBar';
+import Main from './pages/Main';
 
-import Profile from './comps/Profile'
-
-function App() {
+function App() { 
   return (
     <div className="App">
-
-     <CategoryBar></CategoryBar>
-
-     Inclusio
-     <Profile/>
-     <Profile/>
-     <Profile/>
-     <Profile/>
-     <Profile/>
-     <Profile/>
-
+      <Main></Main>
     </div>
   );
 }
