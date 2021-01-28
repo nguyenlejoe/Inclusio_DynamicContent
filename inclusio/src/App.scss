@@ -1,12 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 .App {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-
 }
 
 .spacer {
     margin-top: 30px;
+
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+p{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 6px;
+}
+
+h3{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 6px; 
 }
 
