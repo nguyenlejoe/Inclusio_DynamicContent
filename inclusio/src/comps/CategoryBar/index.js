@@ -85,7 +85,7 @@ var fakeDpt = [
     },
 ]
 
-const CategoryBar = ({categories}) => {
+const CategoryBar = ({categories, onClick}) => {
 
     //States to display first and second set of categories
     const [FirstSet, setFirstSet] = useState(false)
@@ -107,17 +107,9 @@ const CategoryBar = ({categories}) => {
     return(
         <CategoryCont>
             {/* Mapping first and second set of categories */}
-            {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet} active={o.active} onClick={()=>{
-               if(!o.active){
-                o.active = true;  
-               }else{
-                o.active = false;
-               }
-               
-                console.log(o.active)
-            }}>{o.Department}</CategoryTabs>)}
+            {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet} active={o.active} onClick={onClick}>{o.Department}</CategoryTabs>)}
            
-            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} active={o.active}>{o.Department}</CategoryTabs>)}
+            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} active={o.active} onClick={onClick}>{o.Department}</CategoryTabs>)}
            
            {/* Arrow that changes the state of the first set and second */}
             <ArrowCont onClick={()=>{
