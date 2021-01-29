@@ -22,6 +22,7 @@ const InputBox = styled.input`
     border: none;
     outline: none;
     margin: 10px;
+    padding:7px 7px 7px 15px;
     background-color: #F2F2F2;
 
     ::placeholder {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Status from 'comps/StatusTag';
-import {useHistory, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CompContainer = styled.div`
 
