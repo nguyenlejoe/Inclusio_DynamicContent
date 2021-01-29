@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 .App {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .spacer {
@@ -37,3 +37,6 @@ h3{
   margin-top: 5px;
   margin-bottom: 5px;
 }
+@import './pages/Main/main.scss';
+@import './pages/EditMember/Edit.scss';
+

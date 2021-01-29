@@ -10,9 +10,14 @@ const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
 
+    let categories = MemberList.map((member) => member.dep)
+
+    console.log(categories)
+
     const HandleMembers = async() => {
-        let resp = await axios.get("/api/members");
-        console.log(resp);
+        let resp = await axios.get("http://localhost:8080/api/members");
+        setMembers(...[resp.data.members])
+        console.log(MemberList);
     }
 
     useEffect(()=>{
@@ -28,6 +33,9 @@ const Main = () => {
                 <CircleButton></CircleButton>
             </div>
             <Profile/>
+            <CategoryBar categories={categories} />
+
+            <Profile members={MemberList}/>
         </div>
     );
 }
