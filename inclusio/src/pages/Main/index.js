@@ -9,7 +9,7 @@ const Main = () => {
     const [MemberList, setMembers] = useState([]);
 
     const HandleMembers = async() => {
-        let resp = await axios.get("http://localhost:8080/api/members");
+        let resp = await axios.get("/api/members");
         console.log(resp);
     }
 
