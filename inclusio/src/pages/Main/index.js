@@ -27,14 +27,11 @@ const Main = () => {
     return( 
         <div className = "Main">
             <h1>Inclusio</h1>
-            <CategoryBar/>
+            <CategoryBar categories={categories} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
             </div>
-            <Profile/>
-            <CategoryBar categories={categories} />
-
             <Profile members={MemberList}/>
         </div>
     );

@@ -104,7 +104,7 @@ const CategoryBar = ({categories, onClick}) => {
     if(categories.length > 4){
         sliced1 = categories.slice(0, 4)
         sliced2 = categories.slice(4, 9)
-        setNext(false)
+        // setNext(false)
     }
     
     console.log(sliced1, sliced2)
