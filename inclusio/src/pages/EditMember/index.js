@@ -41,7 +41,7 @@ const EditMember = (props) => {
             </div>
             <div className="saveButton"> 
                 <Button 
-                width="100%"
+                width="80%"
                 buttonText= "Save Changes"
                 />
             </div>

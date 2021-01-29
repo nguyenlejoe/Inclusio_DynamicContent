@@ -1,5 +1,5 @@
 import React, {useEffect, useState,} from 'react';
-import styled, {css, } from 'styled-components';
+import styled, {css} from 'styled-components';
 
 const InputCont = styled.div`
     height: 80px;

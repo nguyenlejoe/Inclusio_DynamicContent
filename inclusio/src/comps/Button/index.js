@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Container = styled.button`
 background-color: ${props=>props.bgcolor ? props.bgcolor : "#056571"};
-max-width: ${props=>props.width ? props.width : "266px"};
-min-height: ${props=>props.height ? props.height : "53px"}; 
+width: ${props=>props.width ? props.width : "266px"};
+height: ${props=>props.height ? props.height : "53px"}; 
 border-radius: 100px;
 border: ${props=>props.border ? props.border : "none"};
 color: white;
