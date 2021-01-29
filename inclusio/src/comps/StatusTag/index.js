@@ -12,10 +12,8 @@ align-items: center;
 justify-content:center;
 text-align:center;
 color: white;
-font-size: 10px; //delete this later
-font-weight: bold; //delete this later
 padding: 4px;
-
+position: relative;
 `;
 
 const Text = styled.div`
@@ -28,7 +26,9 @@ min-height: 13px;
 background-image: url(/${props=>props.statusIcon ? props.statusIcon : "url('/complete.svg')"});
 background-size: 100% 100%;
 padding-right: 6px;
-
+display: flex;
+align-items: center;
+justify-content:center;
 `;
 
 

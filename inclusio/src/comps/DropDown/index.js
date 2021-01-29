@@ -10,7 +10,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 cursor:pointer;
-
+margin: 10px;
 `;
 
 const Text = styled.div`
@@ -33,8 +33,9 @@ height: 150px;
 width: 85px;
 display: ${props=> props.display ? props.display : "flex"};
 align-items: center;
+justify-content:center;
 flex-direction: column;
-
+margin-left: 10px;
 
 `;
 
