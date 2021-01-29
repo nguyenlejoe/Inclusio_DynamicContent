@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -9,6 +9,7 @@ width: 85px;
 display: flex;
 justify-content: center;
 align-items: center;
+cursor:pointer;
 
 `;
 
@@ -27,11 +28,13 @@ margin-left: 5px;
 const Menu = styled.div`
 background: #F2F2F2;
 border-radius: 0px 0px 6px 6px;
+margin-top: -4px;
 height: 150px;
 width: 85px;
-display: flex;
+display: ${props=> props.display ? props.display : "flex"};
 align-items: center;
 flex-direction: column;
+
 
 `;
 
@@ -45,41 +48,87 @@ background: linear-gradient(90deg, rgba(196, 196, 196, 0) 0%, rgba(196, 196, 196
 `;
 
 const Complete = styled.div`
-margin-top: 6px;
-margin-bottom: 6px;
 
+&:hover {
+    background-color: #c9c9c9;
+  }
+  width: 100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
 `;
 
 const InProgress = styled.div`
-margin-top: 6px;
-margin-bottom: 6px;
+&:hover {
+    background-color: #c9c9c9;
+  }
+  width: 100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+
 `;
 
 const Behind = styled.div`
-margin-top: 6px;
-margin-bottom: 6px;
+&:hover {
+    background-color: #c9c9c9;
+  }
+  width: 100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
 
 `;
 
 const Overdue = styled.div`
-margin-top: 6px;
-margin-bottom: 6px;
-
+&:hover {
+    background-color: #c9c9c9;
+  }
+  width: 100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
 `;
 
 const Blocked = styled.div`
-margin-top: 6px;
-margin-bottom: 6px;
+border-radius: 0px 0px 6px 6px;
+&:hover {
+    background-color: #c9c9c9;
+  }
+  width: 100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
 
+  
 `;
 
-const DropDown = ({}) => {
+const DropDown = () => {
+
+const [menustate, setMenustate] = useState("none")
+
     return <div>
-        <Container>
+        <Container onClick={()=>{
+              if (menustate === "none"){
+                setMenustate("flex")
+            } else {
+                setMenustate("none")
+            }
+        }}> 
         <Text>Status</Text>
         <Icon></Icon>
     </Container>
-    <Menu>
+    <Menu display={menustate}>
         <Line></Line>
         <Complete>Complete</Complete>
         <Line></Line>
@@ -94,6 +143,7 @@ const DropDown = ({}) => {
     </div>
 
 }
+
 
 DropDown.defaultProps = {
 
