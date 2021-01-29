@@ -4,7 +4,7 @@ import Status from 'comps/StatusTag';
 import {useHistory, Link} from "react-router-dom";
 
 const CompContainer = styled.div`
-
+    overflow:hidden;
 `;
 
 const Container = styled.div`
@@ -19,8 +19,6 @@ display:flex;
 flex-direction: column;
 
 min-width:100%;
-// min-width:320px;
-// max-width:414px;
 min-height:100px;
 
 background-color:white;
@@ -109,24 +107,44 @@ cursor:pointer;
 //Default member
 let tmpMember = [
     {
+        id: 0,
         img: "https://picsum.photos/200",
         name: "Name of Member",
         pos: "Position",
         dep: "Department",
         spec: "Specialization",
         status: "In Progress" ,
+    },
+    {
+        id: 1,
+        img: "https://picsum.photos/200",
+        name: "Name of Member",
+        pos: "Position",
+        dep: "Department",
+        spec: "Specialization",
+        status: "overdue" ,
+    },
+    {
+        id: 2,
+        img: "https://picsum.photos/200",
+        name: "Name of Member",
+        pos: "Position",
+        dep: "Department",
+        spec: "Specialization",
+        status: "overdue" ,
     }
 ]
 
 const Profile = ({members}) => {
-    const [display, setDisplay] = useState(false);
+    const [current, setCurrent] = useState(null);
 
-    const HandleClicked = ()=>{
-        setDisplay(!display)
+    const HandleClicked = (id)=>{
+            setCurrent(id)
+            console.log(current)
     }
     return (
         <CompContainer>
-            {members && members.map(o=> <Container left={display === true ? '-200px' : '0px'}>
+            {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
                         <Avatar src={o.img}/>
@@ -138,22 +156,22 @@ const Profile = ({members}) => {
                             <p>{o.spec}</p>
                             <Status statusText={o.status}/>
                         </Info>
-                        <Expand onClick={HandleClicked}>
+                        <Expand onClick={()=>{HandleClicked(o.id)}}>
                         <img src={"expand.svg"}/>
                         </Expand>
                     </Content>
                     <Divider/>
                 </ProfileCont>
-                <Link style={{ textDecoration: 'none' }} to={{ pathname: "/EditMember", state: {o} }}>
+                <Link style={{ textDecoration: 'none'}} to={{ pathname: "/EditMember", state: {o} }}>
                     <Edit
-                        right={display === true ? '0px' : '100px'}>
+                        right={current === o.id ? '0px' : '100px'}>
                             <img src={"edit.svg"}/>
                     </Edit>
                 </Link>
                 <Bin onClick={()=>{
 
                 }}
-                right={display === true ? '0px' : '200px'}>
+                right={current === o.id ? '0px' : '200px'}>
                     <img src={"bin.svg"}/></Bin>
         </Container>
         )}
