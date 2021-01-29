@@ -10,9 +10,14 @@ const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
 
+    let categories = MemberList.map((member) => member.dep)
+
+    console.log(categories)
+
     const HandleMembers = async() => {
-        let resp = await axios.get("/api/members");
-        console.log(resp);
+        let resp = await axios.get("http://localhost:8080/api/members");
+        setMembers(...[resp.data.members])
+        console.log(MemberList);
     }
 
     useEffect(()=>{
@@ -22,12 +27,12 @@ const Main = () => {
     return( 
         <div className = "Main">
             <h1>Inclusio</h1>
-            <CategoryBar/>
+            <CategoryBar categories={categories} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
             </div>
-            <Profile/>
+            <Profile members={MemberList}/>
         </div>
     );
 }

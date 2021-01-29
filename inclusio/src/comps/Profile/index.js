@@ -36,11 +36,15 @@ height:100%;
 padding:15px 40px 15px 15px ;
 `;
 
-    const Avatar = styled.img`
+    const Avatar = styled.div`
     height:75px;
     width:75px;
     border-radius: 50%;
     background-color: #ccc;
+    background-image:url(${props=>props.bgimg ? props.bgimg : "/user.png"});
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
     `;
 
     const Info = styled.div`
@@ -130,7 +134,7 @@ const Profile = ({members}) => {
             {members && members.map(o=> <Container left={display === true ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar src={o.img}/>
+                        <Avatar bgimg={o.img}/>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>
