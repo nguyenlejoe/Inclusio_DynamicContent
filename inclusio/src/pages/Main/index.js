@@ -11,6 +11,7 @@ const Main = () => {
     const HandleMembers = async() => {
         let resp = await axios.get("http://localhost:8080/api/members");
         console.log(resp);
+        // setMembers(resp.data)
     }
 
     useEffect(()=>{
@@ -22,7 +23,7 @@ const Main = () => {
             <h1>Inclusio</h1>
             <CategoryBar/>
 
-            <Profile/>
+            <Profile /*members={MemberList}*//>
         </div>
     );
 }

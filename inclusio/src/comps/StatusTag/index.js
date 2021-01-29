@@ -15,7 +15,6 @@ color: white;
 font-size: 10px; //delete this later
 font-weight: bold; //delete this later
 padding: 4px;
-
 `;
 
 const Text = styled.div`
@@ -23,8 +22,8 @@ width: 100%;
 `;
 
 const IconBox = styled.div`
-min-width: 13px;
-min-height: 13px;
+min-width: 15px;
+min-height: 15px;
 background-image: url(/${props=>props.statusIcon ? props.statusIcon : "url('/complete.svg')"});
 background-size: 100% 100%;
 padding-right: 6px;

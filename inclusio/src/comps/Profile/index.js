@@ -122,7 +122,7 @@ let tmpMember = [
         pos: "Position",
         dep: "Department",
         spec: "Specialization",
-        status: "overdue" ,
+        status: "Overdue" ,
     },
     {
         id: 2,
@@ -131,7 +131,7 @@ let tmpMember = [
         pos: "Position",
         dep: "Department",
         spec: "Specialization",
-        status: "overdue" ,
+        status: "Overdue" ,
     }
 ]
 
@@ -139,9 +139,13 @@ const Profile = ({members}) => {
     const [current, setCurrent] = useState(null);
 
     const HandleClicked = (id)=>{
+        if(current === id){
+            setCurrent(null)
+        }else{
             setCurrent(id)
-            console.log(current)
+        }
     }
+
     return (
         <CompContainer>
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
