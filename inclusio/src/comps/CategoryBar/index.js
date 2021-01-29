@@ -1,5 +1,5 @@
 import React, {useEffect, useState,} from 'react';
-import styled, {css, ThemeConsumer} from 'styled-components';
+import styled, {css,} from 'styled-components';
 
 const CategoryCont = styled.div`
     min-height: 55px;
@@ -22,6 +22,10 @@ const ArrowCont = styled.div`
     background-size:contain;
     background-repeat:no-repeat;
     background-image:url(/arrow.png);
+
+    ${props => props.active === true && css`
+    display:none;
+`}
 `;
 
 
@@ -90,6 +94,7 @@ const CategoryBar = ({categories, onClick}) => {
     //States to display first and second set of categories
     const [FirstSet, setFirstSet] = useState(false)
     const [SecondSet, setSecondSet] = useState(true)
+    const [nextState, setNext] = useState(true)
 
     //Slice array that is coming through if user assigns more than 4 categories
   
@@ -99,20 +104,28 @@ const CategoryBar = ({categories, onClick}) => {
     if(categories.length > 4){
         sliced1 = categories.slice(0, 4)
         sliced2 = categories.slice(4, 9)
+        // setNext(false)
     }
+    
     console.log(sliced1, sliced2)
 
 
     
     return(
         <CategoryCont>
+
+            {categories && categories.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
+
             {/* Mapping first and second set of categories */}
-            {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet} active={o.active} onClick={onClick}>{o.Department}</CategoryTabs>)}
+            
+            {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
            
-            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} active={o.active} onClick={onClick}>{o.Department}</CategoryTabs>)}
+            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} onClick={onClick}>{o}</CategoryTabs>)}
            
            {/* Arrow that changes the state of the first set and second */}
-            <ArrowCont onClick={()=>{
+            <ArrowCont 
+            active={nextState}
+            onClick={()=>{
                 if(!FirstSet){
                     setFirstSet(true)
                     setSecondSet(false)

@@ -18,7 +18,7 @@ const EditMember = (props) => {
     const [status, setStatus] = useState("");
 
     const onSave = async (img, name, pos, dep, spec, status) => {
-        var resp = await axios.post("/api/members", {img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
+        var resp = await axios.post("http://localhost:8080/api/members", {img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
         console.log("new member", resp);
     }
 
