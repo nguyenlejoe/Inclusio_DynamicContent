@@ -3,6 +3,7 @@ import './Edit.scss';
 import Input from 'comps/Input';
 import StatusTag from 'comps/StatusTag';
 import Button from 'comps/Button';
+import DropDown from 'comps/DropDown';
 import axios from 'axios';
 
 const EditMember = (props) => {
@@ -22,9 +23,9 @@ const EditMember = (props) => {
 
             </div>
 
-            <div className="StatusBox">
                 <StatusTag />
-            </div>
+                <DropDown />
+
             <div className="TasksBox">
                 <Input 
                 placeholder="Name"
