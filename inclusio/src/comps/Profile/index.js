@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import StatusTag from 'comps/StatusTag';
 
 const Container = styled.div`
 display:flex;
@@ -116,12 +117,13 @@ const Profile = ({img, name, pos, dep, spec, status}) => {
                 <span><p>{pos}</p></span>
                 <span><p>{dep}</p></span>
                 <p>{spec}</p>
-                <p>{status}</p>
+                <StatusTag>{status}</StatusTag>
             </Info>
             <Expand onClick={HandleClicked}>
             <img src={"expand.svg"}/>
             </Expand>
         </Content>
+
         <Divider/>
         </ProfileCont>
         <Edit  onClick={()=>{
