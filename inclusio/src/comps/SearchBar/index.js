@@ -4,13 +4,14 @@ import styled from 'styled-components';
 
 const SearchCont = styled.div`
     margin: 10px;
-    height: 35px;
-    width: 250px;
+    height: 45px;
+    width: 78%;
     border-radius: 13px;
     display: flex; 
     background-color: #F2F2F2;
     flex-direction: row;
     align-items:center;
+    justify-content: center;
 `;
 
 const Input = styled.input`
@@ -32,6 +33,7 @@ const SearchImg = styled.div`
     background-repeat:no-repeat;
     background-image:url(/Search.png);
     border-radius: 13px;
+    margin-top: 7px;
 `;
 
 

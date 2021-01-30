@@ -26,7 +26,7 @@ const Main = () => {
 
     return( 
         <div className = "Main">
-            <h1>Inclusio</h1>
+            <h1 className="header">Team Tracker</h1>
             <CategoryBar categories={categories} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
