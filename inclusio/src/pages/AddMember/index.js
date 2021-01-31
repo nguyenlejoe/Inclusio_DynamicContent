@@ -1,15 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import './Edit.scss';
+import './Add.scss';
 import Input from 'comps/Input';
 import StatusTag from 'comps/StatusTag';
 import Button from 'comps/Button';
 import DropDown from 'comps/DropDown';
 import axios from 'axios';
 
-const EditMember = (props) => {
-
-    var member = props.location.state.o;
-    console.log(member)
+const AddMember = () => {
 
     const [img, setImg] = useState("");
     const [name, setName] = useState("");
@@ -24,7 +21,7 @@ const EditMember = (props) => {
     }
 
     return(
-        <div className="EditPage">
+        <div className="AddPage">
             <div className="Header">
                     <img src="/Back.svg" className="backImage"></img>
                 <div className="title">
@@ -51,7 +48,7 @@ const EditMember = (props) => {
             </div>
             <div className="saveButton"> 
             
-            <Button onClick={()=>{
+            <Button path={{ pathname:'/'}} onClick={()=>{
                     onSave(img, name, pos, dep, spec, status)
                 }}
                 width="100%"
@@ -63,4 +60,4 @@ const EditMember = (props) => {
     );
 }
 
-export default EditMember;
+export default AddMember;
