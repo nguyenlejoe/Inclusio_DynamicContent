@@ -20,6 +20,11 @@ const Main = () => {
         console.log(MemberList);
     }
 
+    const DeleteMember = async(id) => {
+        let resp = await axios.delete(`http://localhost:8080/api/members/${id}`);
+        console.log(resp)
+    }
+
     useEffect(()=>{
         HandleMembers()
     },[])
@@ -32,7 +37,7 @@ const Main = () => {
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
             </div>
-            <Profile members={MemberList}/>
+            <Profile members={MemberList} onDelete={DeleteMember}/>
         </div>
     );
 }
