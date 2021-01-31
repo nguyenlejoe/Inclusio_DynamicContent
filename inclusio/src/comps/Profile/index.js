@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import Status from 'comps/StatusTag';
 import {Link} from "react-router-dom";
+import axios from 'axios';
 
 const CompContainer = styled.div`
 
@@ -122,7 +123,9 @@ let tmpMember = [
     }
 ]
 
-const Profile = ({members}) => {
+const Profile = ({members, onDelete}) => {
+
+
     const [display, setDisplay] = useState(false);
 
     const HandleClicked = ()=>{
@@ -134,7 +137,10 @@ const Profile = ({members}) => {
             {members && members.map(o=> <Container left={display === true ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar bgimg={o.img}/>
+                        <Avatar bgimg={o.img} onClick={()=>{
+                    console.log("test")
+                    onDelete(o.id)
+                }}/>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>
@@ -155,9 +161,7 @@ const Profile = ({members}) => {
                             <img src={"edit.svg"}/>
                     </Edit>
                 </Link>
-                <Bin onClick={()=>{
-
-                }}
+                <Bin
                 right={display === true ? '0px' : '200px'}>
                     <img src={"bin.svg"}/></Bin>
         </Container>
