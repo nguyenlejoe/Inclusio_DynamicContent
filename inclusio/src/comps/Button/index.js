@@ -15,6 +15,10 @@ color: white;
     border: solid #056571 3px;
     color: #056571;
   }
+
+  :focus {
+    outline: 0;
+}
 `;
 
 const Button = ({width, height,buttonText, bgcolor, border, path, onClick}) => {

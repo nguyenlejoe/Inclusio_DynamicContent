@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Status from 'comps/StatusTag';
-import {useHistory, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+import axios from 'axios';
 
 const CompContainer = styled.div`
     overflow:hidden;
@@ -139,7 +140,7 @@ let tmpMember = [
     }
 ]
 
-const Profile = ({members}) => {
+const Profile = ({members, onDelete}) => {
     const [current, setCurrent] = useState(null);
 
     const HandleClicked = (id)=>{
@@ -155,7 +156,10 @@ const Profile = ({members}) => {
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar bgimg={o.img}/>
+                        <Avatar bgimg={o.img} onClick={()=>{
+                    console.log("test")
+                    onDelete(o.id)
+                }}/>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>

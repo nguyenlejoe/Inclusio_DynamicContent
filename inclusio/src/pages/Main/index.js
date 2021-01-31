@@ -20,19 +20,24 @@ const Main = () => {
         console.log(MemberList);
     }
 
+    const DeleteMember = async(id) => {
+        let resp = await axios.delete(`http://localhost:8080/api/members/${id}`);
+        console.log(resp)
+    }
+
     useEffect(()=>{
         HandleMembers()
     },[])
 
     return( 
         <div className = "Main">
-            <h1>Inclusio</h1>
+            <h1 className="header">Team Tracker</h1>
             <CategoryBar categories={categories} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
             </div>
-            <Profile members={MemberList}/>
+            <Profile members={MemberList} onDelete={DeleteMember}/>
         </div>
     );
 }

@@ -12,7 +12,7 @@ align-items: center;
 justify-content:center;
 text-align:center;
 color: white;
-padding: 4px;
+padding: 7px;
 position: relative;
 `;
 
