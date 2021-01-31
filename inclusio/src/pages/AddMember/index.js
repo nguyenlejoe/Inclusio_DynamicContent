@@ -22,6 +22,11 @@ const AddMember = () => {
         console.log("new member", resp);
     }
 
+    const HandleStatus = (statusUpdate) =>{
+        setStatus(statusUpdate);
+        console.log(status)
+    }
+
     return(
         <div className="AddPage">
             <div className="Header">
@@ -33,8 +38,8 @@ const AddMember = () => {
                 </div>
             </div>
 
-                <StatusTag />
-                <DropDown />
+                <StatusTag statusText={status}/>
+                <DropDown onStatus={HandleStatus}/>
 
             <div className="TasksBox">
                 <Input type='text' header={'Name'} placeholder={'Jon Doe'} onChange={(e)=>{
