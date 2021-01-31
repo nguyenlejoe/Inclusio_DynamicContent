@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import Status from 'comps/StatusTag';
-import {useHistory, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+import axios from 'axios';
 
 const CompContainer = styled.div`
     overflow:hidden;
@@ -104,7 +105,7 @@ transition: all 0.4s ease;
 
 min-width:100px;
 background: #FF7F11;
-z-index:-2;
+z-index:${props=>props.z ? props.z : '-2'};
 cursor:pointer;
 `;
 
@@ -139,14 +140,20 @@ let tmpMember = [
     }
 ]
 
-const Profile = ({members}) => {
+const Profile = ({members, onDelete}) => {
     const [current, setCurrent] = useState(null);
+    const [z, setZ] = useState(null);
 
     const HandleClicked = (id)=>{
         if(current === id){
-            setCurrent(null)
+            setZ(-2)
+            setTimeout(function(){ setCurrent(null); }, 100);
         }else{
-            setCurrent(id)
+            console.log("open");
+            setZ(-2)
+            setTimeout(function(){ setCurrent(id); }, 100);
+            setTimeout(function(){ setZ(1); }, 500);
+
         }
     }
 
@@ -155,7 +162,10 @@ const Profile = ({members}) => {
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar bgimg={o.img}/>
+                        <Avatar bgimg={o.img} onClick={()=>{
+                    console.log("test")
+                    onDelete(o.id)
+                }}/>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>
@@ -177,8 +187,9 @@ const Profile = ({members}) => {
                     </Edit>
                 </Link>
                 <Bin onClick={()=>{
-
+                    console.log("works")
                 }}
+                z={current === o.id ? z : '-2'}
                 right={current === o.id ? '0px' : '200px'}>
                     <img src={"bin.svg"}/></Bin>
         </Container>

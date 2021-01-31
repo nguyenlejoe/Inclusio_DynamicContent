@@ -5,6 +5,7 @@ import StatusTag from 'comps/StatusTag';
 import Button from 'comps/Button';
 import DropDown from 'comps/DropDown';
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 const EditMember = (props) => {
 
@@ -26,18 +27,14 @@ const EditMember = (props) => {
     }
 
     useEffect(()=>{
-        // setImg(member.img)
-        // setName(member.name)
-        // setPos(member.pos)
-        // setDep(member.dep)
-        // setSpec(member.spec)
-        // setStatus(member.status)
     },[])
 
     return(
         <div className="EditPage">
             <div className="Header">
+                <Link to="/">
                     <img src="/Back.svg" className="backImage"></img>
+                </Link>
                 <div className="title">
                     <h2>Edit Member</h2>
                 </div>

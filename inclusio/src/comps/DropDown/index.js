@@ -36,6 +36,8 @@ align-items: center;
 justify-content:center;
 flex-direction: column;
 margin-left: 10px;
+position:absolute;
+z-index:1;
 
 `;
 

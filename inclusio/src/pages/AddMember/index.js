@@ -6,6 +6,8 @@ import Button from 'comps/Button';
 import DropDown from 'comps/DropDown';
 import axios from 'axios';
 
+import {Link} from 'react-router-dom';
+
 const AddMember = () => {
 
     const [img, setImg] = useState("");
@@ -23,9 +25,11 @@ const AddMember = () => {
     return(
         <div className="AddPage">
             <div className="Header">
+                    <Link to="/">
                     <img src="/Back.svg" className="backImage"></img>
+                </Link>
                 <div className="title">
-                    <h2>Edit Member</h2>
+                    <h2>Add Member</h2>
                 </div>
             </div>
 
