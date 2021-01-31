@@ -26,15 +26,14 @@ const InputBox = styled.input`
     background-color: #F2F2F2;
 
     ::placeholder {
-        font-weight: bold;
         color: gray;
     }
 `;
 
-const Input = ({type, placeholder, header}) => {
+const Input = ({type, placeholder, header, onChange}) => {
     return <InputCont>
     <Label>{header}</Label>
-    <InputBox type={type} placeholder={placeholder} />
+    <InputBox type={type} placeholder={placeholder} onChange={onChange}/>
     </InputCont>
     
 }
