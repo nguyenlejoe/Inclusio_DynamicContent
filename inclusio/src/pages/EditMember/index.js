@@ -9,8 +9,25 @@ import {Link} from "react-router-dom";
 
 const EditMember = (props) => {
 
-    // var member = props.location.state.o;
-    // console.log(member)
+    var member = props.location.state.o;
+    console.log(member)
+
+    const [id, setId] = useState(member.id);
+    const [img, setImg] = useState(member.img);
+    const [name, setName] = useState(member.name);
+    const [pos, setPos] = useState(member.pos);
+    const [dep, setDep] = useState(member.dep);
+    const [spec, setSpec] = useState(member.dep);
+    const [status, setStatus] = useState(member.status);
+
+    const onSave = async (id, img, name, pos, dep, spec, status) => {
+        console.log(id, img, name, pos, dep, spec, status)
+        var resp = await axios.put("http://localhost:8080/api/members/"+member.id, {id:id, img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
+        console.log("new member", resp);
+    }
+
+    useEffect(()=>{
+    },[])
 
     return(
         <div className="EditPage">
@@ -27,28 +44,28 @@ const EditMember = (props) => {
                 <DropDown />
 
             <div className="TasksBox">
-                <Input 
-                placeholder="Name"
-                header="Name"
-                />
-                <Input 
-                placeholder="Position"  
-                header="Position"             
-                />
-                <Input 
-                placeholder="Department"  
-                header="Department"            
-                />
-                <Input
-                placeholder="Specialization"
-                header="Specialization"               
-                />
+                <Input type='text' header={'Name'} placeholder={member.name} onChange={(e)=>{
+                    setName(e.target.value)
+                }}/>
+                <Input type='text' header={'Position'} placeholder={member.pos} onChange={(e)=>{
+                    setPos(e.target.value)
+                }}/>
+                <Input type='text' header={'Department'} placeholder={member.dep} onChange={(e)=>{
+                    setDep(e.target.value)
+                }}/>
+                <Input  type='text' header={'Specialization'} placeholder={member.spec} onChange={(e)=>{
+                    setSpec(e.target.value)
+                }}/>
             </div>
             <div className="saveButton"> 
-                <Button 
-                width="80%"
+            
+            <Button path={{pathname: '/'}} onClick={()=>{
+                    onSave(id, img, name, pos, dep, spec, status)
+                }}
+                width="100%"
                 buttonText= "Save Changes"
                 />
+                
             </div>
         </div>
     );

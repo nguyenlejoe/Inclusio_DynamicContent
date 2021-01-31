@@ -10,9 +10,9 @@ const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
     let categories = MemberList.map((member) => member.dep)
-    
+    let uniqueCats = [...new Set(categories)];
 
-    console.log(categories)
+    console.log('cats',uniqueCats)
 
     const HandleMembers = async() => {
         let resp = await axios.get("http://localhost:8080/api/members");
@@ -37,7 +37,7 @@ const Main = () => {
     return( 
         <div className = "Main">
             <h1 className="header">Team Tracker</h1>
-            <CategoryBar categories={categories} onFilter={FilterCategory}/>
+            <CategoryBar onFilter={FilterCategory}categories={uniqueCats} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const Container = styled.button`
 background-color: ${props=>props.bgcolor ? props.bgcolor : "#056571"};
@@ -17,11 +18,12 @@ background-size: 100% 100%;
 `;
 
 const CircleButton = ({width, height, bgcolor, border}) => {
-    return <Container width={width} height={height} bgcolor={bgcolor} border={border}><CircleBox src="/plus.svg"></CircleBox></Container>
-
+    return <Link style={{ textDecoration: 'none'}} to={{ pathname: "/AddMember" }}>
+        <Container width={width} height={height} bgcolor={bgcolor} border={border}><CircleBox src="/plus.svg"></CircleBox></Container>
+        </Link>
 }
 
-CircleButton.defaultProps = {
+CircleButton.defaultProps = { 
 width: null,
 height: null,
 bgcolor: "#056571",
