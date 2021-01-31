@@ -37,7 +37,7 @@ const Main = () => {
     return( 
         <div className = "Main">
             <h1 className="header">Team Tracker</h1>
-            <CategoryBar onFilter={FilterCategory}categories={uniqueCats} />
+            <CategoryBar onFilter={FilterCategory} categories={uniqueCats} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
