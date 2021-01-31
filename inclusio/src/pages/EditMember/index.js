@@ -3,61 +3,72 @@ import './Edit.scss';
 import Input from 'comps/Input';
 import StatusTag from 'comps/StatusTag';
 import Button from 'comps/Button';
+import DropDown from 'comps/DropDown';
 import axios from 'axios';
 
 const EditMember = (props) => {
 
-    // var member = props.location.state.o;
-    // console.log(member)
+    var member = props.location.state.o;
+    console.log(member)
 
-    const [img, setImg] = useState("");
-    const [name, setName] = useState("");
-    const [pos, setPos] = useState("");
-    const [dep, setDep] = useState("");
-    const [spec, setSpec] = useState("");
-    const [status, setStatus] = useState("");
+    const [id, setId] = useState(member.id);
+    const [img, setImg] = useState(member.img);
+    const [name, setName] = useState(member.name);
+    const [pos, setPos] = useState(member.pos);
+    const [dep, setDep] = useState(member.dep);
+    const [spec, setSpec] = useState(member.dep);
+    const [status, setStatus] = useState(member.status);
 
-    const onSave = async (img, name, pos, dep, spec, status) => {
-        var resp = await axios.post("http://localhost:8080/api/members", {img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
+    const onSave = async (id, img, name, pos, dep, spec, status) => {
+        console.log(id, img, name, pos, dep, spec, status)
+        var resp = await axios.put("http://localhost:8080/api/members/"+member.id, {id:id, img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
         console.log("new member", resp);
     }
+
+    useEffect(()=>{
+        // setImg(member.img)
+        // setName(member.name)
+        // setPos(member.pos)
+        // setDep(member.dep)
+        // setSpec(member.spec)
+        // setStatus(member.status)
+    },[])
 
     return(
         <div className="EditPage">
             <div className="Header">
-
-        
                     <img src="/Back.svg" className="backImage"></img>
                 <div className="title">
                     <h2>Edit Member</h2>
                 </div>
-
             </div>
 
-            <div className="StatusBox">
                 <StatusTag />
-            </div>
+                <DropDown />
+
             <div className="TasksBox">
-                <Input type='text' placeholder='Name' onChange={(e)=>{
+                <Input type='text' header={'Name'} placeholder={member.name} onChange={(e)=>{
                     setName(e.target.value)
                 }}/>
-                <Input type='text' placeholder='Position' onChange={(e)=>{
-                    setName(e.target.value)
+                <Input type='text' header={'Position'} placeholder={member.pos} onChange={(e)=>{
+                    setPos(e.target.value)
                 }}/>
-                <Input type='text' placeholder='Department' onChange={(e)=>{
-                    setName(e.target.value)
+                <Input type='text' header={'Department'} placeholder={member.dep} onChange={(e)=>{
+                    setDep(e.target.value)
                 }}/>
-                <Input  type='text' placeholder='Specialization' onChange={(e)=>{
-                    setName(e.target.value)
+                <Input  type='text' header={'Specialization'} placeholder={member.spec} onChange={(e)=>{
+                    setSpec(e.target.value)
                 }}/>
             </div>
             <div className="saveButton"> 
-                <Button  onClick={()=>{
-                    onSave(img, name, pos, dep, spec, status)
+            
+            <Button path={{pathname: '/'}} onClick={()=>{
+                    onSave(id, img, name, pos, dep, spec, status)
                 }}
                 width="100%"
                 buttonText= "Save Changes"
                 />
+                
             </div>
         </div>
     );

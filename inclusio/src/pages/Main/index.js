@@ -15,7 +15,7 @@ const Main = () => {
     console.log(categories)
 
     const HandleMembers = async() => {
-        let resp = await axios.get("/api/members");
+        let resp = await axios.get("http://localhost:8080/api/members");
         setMembers(...[resp.data.members])
         console.log(MemberList);
     }

@@ -21,7 +21,7 @@ const CircleButton = ({width, height, bgcolor, border}) => {
 
 }
 
-CircleButton.defaultProps = {
+CircleButton.defaultProps = { 
 width: null,
 height: null,
 bgcolor: "#056571",

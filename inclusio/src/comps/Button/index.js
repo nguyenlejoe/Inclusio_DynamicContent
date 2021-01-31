@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {history, Link} from 'react-router-dom';
 
 const Container = styled.button`
 background-color: ${props=>props.bgcolor ? props.bgcolor : "#056571"};
@@ -16,9 +17,10 @@ color: white;
   }
 `;
 
-const Button = ({width, height,buttonText, bgcolor, border}) => {
-    return <Container width={width} height={height} bgcolor={bgcolor} border={border}>{buttonText}</Container>
-
+const Button = ({width, height,buttonText, bgcolor, border, path, onClick}) => {
+    return <Link to={path}>
+    <Container width={width} height={height} bgcolor={bgcolor} border={border} onClick={onClick}>{buttonText}</Container>
+    </Link>
 }
 
 Button.defaultProps = {
