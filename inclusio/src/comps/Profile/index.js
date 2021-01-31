@@ -105,7 +105,7 @@ transition: all 0.4s ease;
 
 min-width:100px;
 background: #FF7F11;
-z-index:-2;
+z-index:${props=>props.z ? props.z : '-2'};
 cursor:pointer;
 `;
 
@@ -142,12 +142,18 @@ let tmpMember = [
 
 const Profile = ({members, onDelete}) => {
     const [current, setCurrent] = useState(null);
+    const [z, setZ] = useState(null);
 
     const HandleClicked = (id)=>{
         if(current === id){
-            setCurrent(null)
+            setZ(-2)
+            setTimeout(function(){ setCurrent(null); }, 100);
         }else{
-            setCurrent(id)
+            console.log("open");
+            setZ(-2)
+            setTimeout(function(){ setCurrent(id); }, 100);
+            setTimeout(function(){ setZ(1); }, 500);
+
         }
     }
 
@@ -181,8 +187,9 @@ const Profile = ({members, onDelete}) => {
                     </Edit>
                 </Link>
                 <Bin onClick={()=>{
-
+                    console.log("works")
                 }}
+                z={current === o.id ? z : '-2'}
                 right={current === o.id ? '0px' : '200px'}>
                     <img src={"bin.svg"}/></Bin>
         </Container>
