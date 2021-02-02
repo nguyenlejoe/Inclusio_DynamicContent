@@ -20,7 +20,8 @@ const Main = () => {
     const HandleMembers = async() => {
         let resp = await axios.get("http://localhost:8080/api/members");
         setMembers(...[resp.data.members])
-        console.log(MemberList)
+        console.log('all',MemberList)
+        FilterCategory('All')
     }
 
     const GetCats = async() => {
@@ -40,7 +41,7 @@ const Main = () => {
             let resp = await axios.get(`http://localhost:8080/api/members/filter/${dpt}`);
             setFilter(...[resp.data.members])
             console.log(Filtered)
-        } else{
+        } else if(dpt === 'All'){
             let resp = await axios.get(`http://localhost:8080/api/members/filter/All`);
             setFilter(...[resp.data.members])
             console.log("Help",Filtered)

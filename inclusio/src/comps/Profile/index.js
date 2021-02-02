@@ -156,7 +156,6 @@ const Profile = ({members, onDelete}) => {
 
         }
     }
-
     return (
         <CompContainer>
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
