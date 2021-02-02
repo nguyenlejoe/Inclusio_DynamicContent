@@ -23,6 +23,7 @@ background-image: url('/down.svg');
 width: 10px;
 height: 10px;
 margin-left: 5px;
+
 `;
 
 const Menu = styled.div`
@@ -125,11 +126,12 @@ const [status, setStatus] = useState('status')
         <Container onClick={()=>{
               if (menustate === "none"){
                 setMenustate("flex")
+                
             } else {
                 setMenustate("none")
             }
         }}> 
-        <Text >{status}</Text>
+        <Text>{status}</Text>
         <Icon></Icon>
     </Container>
     <Menu display={menustate}>

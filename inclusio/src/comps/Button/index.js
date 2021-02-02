@@ -9,11 +9,14 @@ height: ${props=>props.height ? props.height : "53px"};
 border-radius: 100px;
 border: ${props=>props.border ? props.border : "none"};
 color: white;
+transition: 0.3s;
+
 
 &:hover {
     background: none;
     border: solid #056571 3px;
     color: #056571;
+
   }
 
   :focus {
