@@ -9,12 +9,17 @@ height: ${props=>props.height ? props.height : "53px"};
 border-radius: 100px;
 border: ${props=>props.border ? props.border : "none"};
 color: white;
+transition: 0.6s;
+border: solid #056571 3px;
+cursor:pointer;
 
 &:hover {
     background: none;
     border: solid #056571 3px;
     color: #056571;
-  }
+    transform: scale(1.05);
+}
+
 
   :focus {
     outline: 0;
