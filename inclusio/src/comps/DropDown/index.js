@@ -5,7 +5,7 @@ const Container = styled.div`
 background: #F2F2F2;
 border-radius: 6px;
 height: 30px;
-width: 85px;
+width: 100px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -30,7 +30,7 @@ background: #F2F2F2;
 border-radius: 0px 0px 6px 6px;
 margin-top: -4px;
 height: 150px;
-width: 85px;
+width: 100px;
 display: ${props=> props.display ? props.display : "flex"};
 align-items: center;
 justify-content:center;
@@ -43,7 +43,7 @@ z-index:1;
 
 const Line = styled.div`
 height: 0.9900970458984375px;
-width: 85px;
+width: 100px;
 left: 1290px;
 background: linear-gradient(90deg, rgba(196, 196, 196, 0) 0%, rgba(196, 196, 196, 0) 0.01%, #C4C4C4 34.38%, #C4C4C4 68.75%, rgba(196, 196, 196, 0) 100%);
 

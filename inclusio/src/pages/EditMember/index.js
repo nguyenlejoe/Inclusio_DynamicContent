@@ -62,7 +62,6 @@ const EditMember = (props) => {
             <Button path={{pathname: '/'}} onClick={()=>{
                     onSave(id, img, name, pos, dep, spec, status)
                 }}
-                width="100%"
                 buttonText= "Save Changes"
                 />
                 
