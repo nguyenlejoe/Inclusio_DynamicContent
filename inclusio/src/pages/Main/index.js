@@ -9,7 +9,10 @@ import CircleButton from 'comps/CircleButton';
 const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
-    let categories = MemberList.map((member) => member.dep)
+    const [Cats, setCategories] = useState([])
+    const [Filtered, setFilter] = useState([])
+
+    let categories = Cats.map((member) => member)
     let uniqueCats = [...new Set(categories)];
 
     console.log('cats',uniqueCats)
@@ -17,7 +20,13 @@ const Main = () => {
     const HandleMembers = async() => {
         let resp = await axios.get("http://localhost:8080/api/members");
         setMembers(...[resp.data.members])
-        console.log(MemberList);
+        console.log(MemberList)
+    }
+
+    const GetCats = async() => {
+        let resp = await axios.get("http://localhost:8080/api/members/dep");
+        setCategories(resp.data.members)
+
     }
 
     const DeleteMember = async(id) => {
@@ -26,23 +35,32 @@ const Main = () => {
         console.log(resp)
     }
 
-    const FilterCategory = (dpt) => {
-        setMembers(MemberList.filter(o => o.dep === dpt))
+    const FilterCategory = async(dpt) => {
+        if(dpt !== "All"){
+            let resp = await axios.get(`http://localhost:8080/api/members/filter/${dpt}`);
+            setFilter(...[resp.data.members])
+            console.log(Filtered)
+        } else{
+            let resp = await axios.get(`http://localhost:8080/api/members/filter/All`);
+            setFilter(...[resp.data.members])
+            console.log("Help",Filtered)
+        }
     }
 
     useEffect(()=>{
         HandleMembers()
+        GetCats()
     },[])
 
     return( 
         <div className = "Main">
             <h1 className="header">Team Tracker</h1>
-            <CategoryBar onFilter={FilterCategory} categories={uniqueCats} />
+            <CategoryBar onFilter={FilterCategory} onAll={HandleMembers} categories={uniqueCats} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
             </div>
-            <Profile members={MemberList} onDelete={DeleteMember}/>
+            <Profile members={Filtered} onDelete={DeleteMember}/>
         </div>
     );
 }

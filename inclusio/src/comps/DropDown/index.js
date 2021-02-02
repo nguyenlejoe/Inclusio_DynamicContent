@@ -116,10 +116,10 @@ border-radius: 0px 0px 6px 6px;
   
 `;
 
-const DropDown = () => {
+const DropDown = ({onStatus}) => {
 
-const [menustate, setMenustate] = useState("none")
-const [status, setStatus] = useState('status')
+  const [menustate, setMenustate] = useState("none")
+  const [status, setStatus] = useState('status')
 
     return <div>
         <Container onClick={()=>{
@@ -135,23 +135,28 @@ const [status, setStatus] = useState('status')
     <Menu display={menustate}>
         <Line></Line>
         <Complete onClick={()=>{
-          setStatus('Complete')
+          setStatus("Complete")
+          onStatus("Complete")
         }}>Complete</Complete>
         <Line></Line>
         <InProgress onClick={()=>{
-          setStatus('In Progress')
+           setStatus("In Progress")
+           onStatus("In Progress")
         }}>In Progress</InProgress>
         <Line></Line>
         <Behind onClick={()=>{
-          setStatus('Behind')
+           setStatus("Behind")
+           onStatus("Behind")
         }}>Behind</Behind>
         <Line></Line>
         <Overdue onClick={()=>{
-          setStatus('Overdue')
+          setStatus("Overdue")
+          onStatus("Overdue")
         }}>Overdue</Overdue>
         <Line></Line>
         <Blocked onClick={()=>{
-          setStatus('Blocked')
+           setStatus("Blocked")
+           onStatus("Blocked")
         }}>Blocked</Blocked>
     </Menu>
     </div>
