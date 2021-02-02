@@ -9,16 +9,25 @@ import CircleButton from 'comps/CircleButton';
 const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
+    const [AllCats, setAllCats] = useState([]);
+    const [Cats, setCats] = useState([]);
 
     let categories = MemberList.map((member) => member.dep)
-    let uniqueCats = [...new Set(categories)];
-
-    console.log('cats',uniqueCats)
+    let cats = [new Set(categories)]
 
     const HandleMembers = async() => {
         let resp = await axios.get("http://localhost:8080/api/members");
         setMembers(...[resp.data.members])
-        console.log(MemberList);
+    }
+
+    const GetCats = async() => {
+        let resp = await axios.get("http://localhost:8080/api/members/dep");
+        setAllCats(resp.data.members);
+
+    }
+
+    const FilterCats = ()=>{
+
     }
 
     const DeleteMember = async(id) => {
@@ -28,17 +37,18 @@ const Main = () => {
 
     useEffect(()=>{
         HandleMembers()
+        // GetCats()
     },[])
 
     return( 
         <div className = "Main">
             <h1 className="header">Team Tracker</h1>
-            <CategoryBar categories={uniqueCats} />
+            <CategoryBar categories={cats} />
             <div className="top_cont">
                 <SearchBar></SearchBar>
                 <CircleButton></CircleButton>
             </div>
-            <Profile members={MemberList} onDelete={DeleteMember}/>
+            <Profile members={MemberList} onDelete={GetCats}/>
         </div>
     );
 }

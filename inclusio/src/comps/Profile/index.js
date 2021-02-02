@@ -156,16 +156,12 @@ const Profile = ({members, onDelete}) => {
 
         }
     }
-
     return (
         <CompContainer>
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar bgimg={o.img} onClick={()=>{
-                    console.log("test")
-                    onDelete(o.id)
-                }}/>
+                        <Avatar bgimg={o.img} onClick={onDelete}/>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>

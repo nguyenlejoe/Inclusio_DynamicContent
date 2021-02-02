@@ -1,5 +1,6 @@
-import React, {useEffect, useState,} from 'react';
-import styled, {css,} from 'styled-components';
+import React, {useEffect, useState} from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
 
 const CategoryCont = styled.div`
     min-height: 55px;
@@ -22,11 +23,11 @@ const ArrowCont = styled.div`
     background-size:contain;
     background-repeat:no-repeat;
     background-image:url(/arrow.png);
-
-    ${props => props.active === true && css`
-    display:none;
-`}
 `;
+
+//     ${props => props.active === true && css`
+//     display:none;
+// `}
 
 
 const CategoryTabs = styled.div`
@@ -40,19 +41,15 @@ const CategoryTabs = styled.div`
     position:relative;
     top:3px;
 
-
-    ${props => props.active === true && css`
-        border-bottom: 3px solid #056571;
-        color:#056571;
-    `}
-
-    ${props => props.state === true && css`
-        display:none;
-`}
-    
 `;
-
-
+    // ${props => props.active === true && css`
+    //     border-bottom: 3px solid #056571;
+    //     color:#056571;
+    // `}
+//     ${props => props.state === true && css`
+//         display:none;
+// `}
+    
 
 var fakeDpt = [
     {
@@ -89,57 +86,100 @@ var fakeDpt = [
     },
 ]
 
-const CategoryBar = ({categories, onClick}) => {
 
-    //States to display first and second set of categories
-    const [FirstSet, setFirstSet] = useState(false)
-    const [SecondSet, setSecondSet] = useState(true)
-    const [nextState, setNext] = useState(true)
+
+
+const CategoryBar = ({categories, onClick}) => {
+    const [Cats, setCats] = useState([])
+    const [AllCats, setAllCats] = useState([])
+    const items_per_page = 4;
+    var num = 1;
+
+    // var newCats = new Set(categories)
+    // console.log('new cats', newCats)
+    // setCats([newCats])
+
+    // const GetCats = async() => {
+    //     let resp = await axios.get("http://localhost:8080/api/members/dep");
+    //     setAllCats(...[resp.data.members])
+    //     console.log('cats', resp)
+    //     FilterCats()
+    // }
+
+    // const FilterCats = ()=>{
+    //     setCats(...new Set(AllCats))
+    // }
+
+    const GetCats = () => {
+        // console.log('passed',categories)
+    //     // setAllCats(categories);
+    //     // var arr = categories.slice(0,4)
+    //     // setCats(arr)
+    //     // setAllCats(categories)
+    }
+
+    // const ChangeCats = (num) =>{
+    //     setCats(
+    //         allcats.slice(items_per_page*(num-1), items_per_page*num)
+    //     )
+    // }
+
+    // console.log('cats',categories)
+    useEffect(()=>{
+        GetCats()
+    },[])
+
+    // States to display first and second set of categories
+    // const [FirstSet, setFirstSet] = useState(false)
+    // const [SecondSet, setSecondSet] = useState(true)
+    // const [nextState, setNext] = useState(true)
 
     //Slice array that is coming through if user assigns more than 4 categories
   
-    var sliced1;
-    var sliced2;
+    // var sliced1;
+    // var sliced2;
     
-    if(categories.length > 4){
-        sliced1 = categories.slice(0, 4)
-        sliced2 = categories.slice(4, 9)
-        // setNext(false)
-    }
+    // if(categories.length > 4){
+    //     sliced1 = categories.slice(0, 4)
+    //     sliced2 = categories.slice(4, 9)
+    //     // setNext(false)
+    // }
     
-    console.log(sliced1, sliced2)
+    // console.log(sliced1, sliced2)
 
 
-    
-    return(
-        <CategoryCont>
+    return <CategoryCont>
 
-            {categories && categories.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
+            {categories && categories.map(o=><CategoryTabs>{o}</CategoryTabs>)}
+
+            {/* {categories && categories.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)} */}
 
             {/* Mapping first and second set of categories */}
             
-            {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
+            {/* {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
            
-            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} onClick={onClick}>{o}</CategoryTabs>)}
+            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} onClick={onClick}>{o}</CategoryTabs>)} */}
            
            {/* Arrow that changes the state of the first set and second */}
             <ArrowCont 
-            active={nextState}
+            // active={nextState}
             onClick={()=>{
-                if(!FirstSet){
-                    setFirstSet(true)
-                    setSecondSet(false)
-                }else{
-                    setFirstSet(false)
-                    setSecondSet(true)
-                }
+                // num = num++;
+                // ChangeCats(num)
+
+                // if(!FirstSet){
+                //     setFirstSet(true)
+                //     setSecondSet(false)
+                // }else{
+                //     setFirstSet(false)
+                //     setSecondSet(true)
+                // }
             }}></ArrowCont>
         </CategoryCont>
-    );
 }
 
 CategoryBar.defaultProps = {
-    categories:fakeDpt
+    // categories:fakeDpt
 }
 
 export default CategoryBar;
