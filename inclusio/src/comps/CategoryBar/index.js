@@ -28,6 +28,16 @@ const ArrowCont = styled.div`
 `}
 `;
 
+const CategorySet = styled.div`
+    display:flex;
+    width:100%;
+    justify-content:space-around;
+
+
+    ${props => props.state === true && css`
+    display:none;
+    `}
+`;
 
 const CategoryTabs = styled.div`
     display:flex;
@@ -48,7 +58,7 @@ const CategoryTabs = styled.div`
 
     ${props => props.state === true && css`
         display:none;
-`}
+    `}
     
 `;
 
@@ -89,41 +99,32 @@ var fakeDpt = [
     },
 ]
 
-const CategoryBar = ({categories, onClick}) => {
-
-    //States to display first and second set of categories
-    const [FirstSet, setFirstSet] = useState(false)
-    const [SecondSet, setSecondSet] = useState(true)
-    const [nextState, setNext] = useState(true)
-
-    //Slice array that is coming through if user assigns more than 4 categories
-  
-    var sliced1;
-    var sliced2;
-    
-    if(categories.length > 4){
-        sliced1 = categories.slice(0, 4)
-        sliced2 = categories.slice(4, 9)
-        // setNext(false)
-    }
-    
-    console.log(sliced1, sliced2)
+const CategoryBar = ({categories, onFilter}) => {
 
 
     
     return(
         <CategoryCont>
 
-            {categories && categories.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
+            <CategorySet>
+                {categories && categories.map(o=><CategoryTabs onClick={()=>{
+                    onFilter(o)
+                }}>{o}</CategoryTabs>)}
+            </CategorySet>
+
+
+            {/* <OneSetTabs state={OneSet}>
+                {categories && categories.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
+            </OneSetTabs> */}
 
             {/* Mapping first and second set of categories */}
             
-            {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
+            {/* {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
            
-            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} onClick={onClick}>{o}</CategoryTabs>)}
+            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} onClick={onClick}>{o}</CategoryTabs>)} */}
            
            {/* Arrow that changes the state of the first set and second */}
-            <ArrowCont 
+            {/* <ArrowCont 
             active={nextState}
             onClick={()=>{
                 if(!FirstSet){
@@ -133,7 +134,7 @@ const CategoryBar = ({categories, onClick}) => {
                     setFirstSet(false)
                     setSecondSet(true)
                 }
-            }}></ArrowCont>
+            }}></ArrowCont> */}
         </CategoryCont>
     );
 }

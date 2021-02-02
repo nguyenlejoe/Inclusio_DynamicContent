@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import Status from 'comps/StatusTag';
 import {Link} from "react-router-dom";
+import axios from 'axios';
 
 const CompContainer = styled.div`
-
+    overflow:hidden;
 `;
 
 const Container = styled.div`
@@ -19,8 +20,6 @@ display:flex;
 flex-direction: column;
 
 min-width:100%;
-// min-width:320px;
-// max-width:414px;
 min-height:100px;
 
 background-color:white;
@@ -106,32 +105,61 @@ transition: all 0.4s ease;
 
 min-width:100px;
 background: #FF7F11;
-z-index:-2;
+z-index:${props=>props.z ? props.z : '-2'};
 cursor:pointer;
 `;
 
 //Default member
 let tmpMember = [
     {
+        id: 0,
         img: "https://picsum.photos/200",
         name: "Name of Member",
         pos: "Position",
         dep: "Department",
         spec: "Specialization",
         status: "In Progress" ,
+    },
+    {
+        id: 1,
+        img: "https://picsum.photos/200",
+        name: "Name of Member",
+        pos: "Position",
+        dep: "Department",
+        spec: "Specialization",
+        status: "Overdue" ,
+    },
+    {
+        id: 2,
+        img: "https://picsum.photos/200",
+        name: "Name of Member",
+        pos: "Position",
+        dep: "Department",
+        spec: "Specialization",
+        status: "Overdue" ,
     }
 ]
 
-const Profile = ({members}) => {
-    const [display, setDisplay] = useState(false);
+const Profile = ({members, onDelete}) => {
+    const [current, setCurrent] = useState(null);
+    const [z, setZ] = useState(null);
 
-    const HandleClicked = ()=>{
-        setDisplay(!display)
+    const HandleClicked = (id)=>{
+        if(current === id){
+            setZ(-2)
+            setTimeout(function(){ setCurrent(null); }, 100);
+        }else{
+            console.log("open");
+            setZ(-2)
+            setTimeout(function(){ setCurrent(id); }, 100);
+            setTimeout(function(){ setZ(1); }, 500);
+
+        }
     }
 
     return (
         <CompContainer>
-            {members && members.map(o=> <Container left={display === true ? '-200px' : '0px'}>
+            {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
                         <Avatar bgimg={o.img}/>
@@ -143,22 +171,23 @@ const Profile = ({members}) => {
                             <p>{o.spec}</p>
                             <Status statusText={o.status}/>
                         </Info>
-                        <Expand onClick={HandleClicked}>
+                        <Expand onClick={()=>{HandleClicked(o.id)}}>
                         <img src={"expand.svg"}/>
                         </Expand>
                     </Content>
                     <Divider/>
                 </ProfileCont>
-                <Link style={{ textDecoration: 'none' }} to={{ pathname: "/EditMember", state: {o} }}>
+                <Link style={{ textDecoration: 'none'}} to={{ pathname: "/EditMember", state: {o} }}>
                     <Edit
-                        right={display === true ? '0px' : '100px'}>
+                        right={current === o.id ? '0px' : '100px'}>
                             <img src={"edit.svg"}/>
                     </Edit>
                 </Link>
                 <Bin onClick={()=>{
-
+                    onDelete(o.id)
                 }}
-                right={display === true ? '0px' : '200px'}>
+                z={current === o.id ? z : '-2'}
+                right={current === o.id ? '0px' : '200px'}>
                     <img src={"bin.svg"}/></Bin>
         </Container>
         )}
