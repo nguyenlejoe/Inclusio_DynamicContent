@@ -22,8 +22,13 @@ const EditMember = (props) => {
 
     const onSave = async (id, img, name, pos, dep, spec, status) => {
         console.log(id, img, name, pos, dep, spec, status)
-        var resp = await axios.put("http://localhost:8080/api/members/"+member.id, {id:id, img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
+        var resp = await axios.put(`http://localhost:8080/api/members/${id}`, {id:id, img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
         console.log("new member", resp);
+    }
+
+    const HandleStatus = (statusUpdate) =>{
+        setStatus(statusUpdate);
+        console.log(status)
     }
 
     useEffect(()=>{
@@ -40,8 +45,8 @@ const EditMember = (props) => {
                 </div>
             </div>
 
-                <StatusTag />
-                <DropDown />
+                <StatusTag statusText={status}/>
+                <DropDown onStatus={HandleStatus}/>
 
             <div className="TasksBox">
                 <Input type='text' header={'Name'} placeholder={member.name} onChange={(e)=>{

@@ -102,7 +102,7 @@ var fakeDpt = [
     },
 ]
 
-const CategoryBar = ({categories, onFilter}) => {
+const CategoryBar = ({categories, onFilter, onAll}) => {
 
 
     return <CategoryCont>
@@ -110,6 +110,7 @@ const CategoryBar = ({categories, onFilter}) => {
             {categories && categories.map(o=><CategoryTabs>{o}</CategoryTabs>)}
 
             <CategorySet>
+                <CategoryTabs onClick={onAll}>All</CategoryTabs>
                 {categories && categories.map(o=><CategoryTabs onClick={()=>{
                     onFilter(o)
                 }}>{o}</CategoryTabs>)}
