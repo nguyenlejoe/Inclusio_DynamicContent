@@ -161,7 +161,7 @@ const Profile = ({members, onDelete}) => {
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar bgimg={o.img} onClick={onDelete}/>
+                        <Avatar bgimg={o.img}/>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>
@@ -183,7 +183,7 @@ const Profile = ({members, onDelete}) => {
                     </Edit>
                 </Link>
                 <Bin onClick={()=>{
-                    console.log("works")
+                    onDelete(o.id)
                 }}
                 z={current === o.id ? z : '-2'}
                 right={current === o.id ? '0px' : '200px'}>
