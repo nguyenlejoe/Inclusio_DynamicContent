@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, css} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -106,39 +106,12 @@ const CategoryBar = ({categories, onFilter, onAll}) => {
 
 
     return <CategoryCont>
-
-            {categories && categories.map(o=><CategoryTabs>{o}</CategoryTabs>)}
-
             <CategorySet>
                 <CategoryTabs onClick={onAll}>All</CategoryTabs>
                 {categories && categories.map(o=><CategoryTabs onClick={()=>{
                     onFilter(o)
                 }}>{o}</CategoryTabs>)}
             </CategorySet>
-
-
-            {/* <OneSetTabs state={OneSet}>
-                {categories && categories.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
-            </OneSetTabs> */}
-
-            {/* Mapping first and second set of categories */}
-            
-            {/* {sliced1 && sliced1.map(o=><CategoryTabs state={FirstSet}  onClick={onClick}>{o}</CategoryTabs>)}
-           
-            {sliced2 && sliced2.map(o=><CategoryTabs state={SecondSet} onClick={onClick}>{o}</CategoryTabs>)} */}
-           
-           {/* Arrow that changes the state of the first set and second */}
-            {/* <ArrowCont 
-            active={nextState}
-            onClick={()=>{
-                if(!FirstSet){
-                    setFirstSet(true)
-                    setSecondSet(false)
-                }else{
-                    setFirstSet(false)
-                    setSecondSet(true)
-                }
-            }}></ArrowCont> */}
         </CategoryCont>
 }
 
