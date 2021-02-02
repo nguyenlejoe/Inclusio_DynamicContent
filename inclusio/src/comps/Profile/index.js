@@ -51,6 +51,7 @@ padding:15px 40px 15px 15px ;
     margin:0px 15px;
     & > span{
         display:none;
+        text-align: none;
     }
     @media (min-width: 641px) {
         display:flex;
