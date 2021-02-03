@@ -38,11 +38,15 @@ const SearchImg = styled.div`
 
 
 
-const SearchBar = ({placeholder, type}) => {
+const SearchBar = ({placeholder, type, searchFilter}) => {
 
     return <SearchCont>
             <SearchImg />
-            <Input type={type} placeholder={placeholder} />
+            <Input type={type} placeholder={placeholder}  onChange={(e) => { 
+                searchFilter(e.target.value)
+            }}/>
+
+            
         </SearchCont>
     
 }
