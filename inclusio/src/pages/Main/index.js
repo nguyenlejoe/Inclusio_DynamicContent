@@ -10,7 +10,7 @@ const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
     const [Cats, setCategories] = useState([])
-    const [Filtered, setFilter] = useState([])
+    const [Filtered, setFilter, searchFilter] = useState([])
 
     let categories = Cats.map((member) => member)
     let uniqueCats = [...new Set(categories)];
@@ -43,6 +43,21 @@ const Main = () => {
         }
     }
 
+    const Names = async(name) => {
+        if(name !== ""){
+            let resp = await axios.get(`http://localhost:8080/api/members/name/${name}`);
+            setFilter(...[resp.data.members])
+            console.log(Filtered)
+            console.log(name)
+        } else {
+            console.log(name)
+            let resp = await axios.get(`http://localhost:8080/api/members/name/All`);
+            setFilter(...[resp.data.members])
+            console.log("Help",Filtered)
+        }
+    }
+
+
     useEffect(()=>{
         HandleMembers()
         GetCats()
@@ -53,7 +68,9 @@ const Main = () => {
             <h1 className="header">Team Tracker</h1>
             <CategoryBar onFilter={FilterCategory} onAll={HandleMembers} categories={uniqueCats} />
             <div className="top_cont">
-                <SearchBar></SearchBar>
+                <SearchBar
+                    searchFilter={Names}
+                />
                 <CircleButton></CircleButton>
             </div>
             <Profile members={Filtered} onDelete={DeleteMember}/>
