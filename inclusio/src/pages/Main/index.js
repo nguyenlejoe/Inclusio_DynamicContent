@@ -10,7 +10,7 @@ const Main = () => {
     
     const [MemberList, setMembers] = useState([]);
     const [Cats, setCategories] = useState([])
-    const [Filtered, setFilter] = useState([])
+    const [Filtered, setFilter, searchFilter] = useState([])
 
     let categories = Cats.map((member) => member)
     let uniqueCats = [...new Set(categories)];
