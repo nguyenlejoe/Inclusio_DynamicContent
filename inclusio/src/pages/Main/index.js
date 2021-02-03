@@ -4,6 +4,7 @@ import Profile from 'comps/Profile';
 import CategoryBar from 'comps/CategoryBar';
 import SearchBar from 'comps/SearchBar';
 import CircleButton from 'comps/CircleButton';
+import AvatarSelection from 'comps/AvatarSelection'
 
 
 const Main = () => {

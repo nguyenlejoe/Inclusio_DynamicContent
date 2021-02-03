@@ -5,6 +5,7 @@ import StatusTag from 'comps/StatusTag';
 import Button from 'comps/Button';
 import DropDown from 'comps/DropDown';
 import axios from 'axios';
+import AvatarSelection from 'comps/AvatarSelection'
 
 import {Link} from 'react-router-dom';
 
@@ -38,8 +39,13 @@ const AddMember = () => {
                 </div>
             </div>
 
-                <StatusTag statusText={status}/>
+            <AvatarSelection></AvatarSelection>
+
+            <div className="statusTag">
                 <DropDown onStatus={HandleStatus}/>
+                <StatusTag statusText={status}/>
+            </div>
+                
 
             <div className="TasksBox">
                 <Input type='text' header={'Name'} placeholder={'Jon Doe'} onChange={(e)=>{
