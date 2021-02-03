@@ -60,7 +60,6 @@ const AddMember = () => {
             <Button path={{ pathname:'/'}} onClick={()=>{
                     onSave(img, name, pos, dep, spec, status)
                 }}
-                width="100%"
                 buttonText= "Save Changes"
                 />
                 
