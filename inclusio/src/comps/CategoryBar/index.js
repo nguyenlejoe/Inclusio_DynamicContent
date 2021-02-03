@@ -58,13 +58,6 @@ const CategoryTabs = styled.div`
     `}
     
 `;
-    // ${props => props.active === true && css`
-    //     border-bottom: 3px solid #056571;
-    //     color:#056571;
-    // `}
-//     ${props => props.state === true && css`
-//         display:none;
-// `}
     
 
 var fakeDpt = [
@@ -103,8 +96,9 @@ var fakeDpt = [
 ]
 
 const CategoryBar = ({categories, onFilter, onAll}) => {
+    console.log(categories)
     const [Cats, setCats] = useState([]);
-    const [Page, setPage] = useState(0);
+    const [Page, setPage] = useState(1);
     const NumItems = 4;
     var Num = Page + 1;
     var arr = categories.slice(0,3);

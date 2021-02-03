@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 background-color: ${props=>props.bgcolor ? props.bgcolor : "#056571"};
-width:85px;
+width:110px;
 height:20px;
 border-radius: 100px;
 border: none;
@@ -70,7 +70,7 @@ const StatusTag = ({statusText, statusIcon, bgcolor}) => {
 
 StatusTag.defaultProps = {
 bgcolor: "#056571",
-statusText: "Complete",
+statusText: "Pick Status",
 statusIcon: "url('/complete.svg')"
 }
 
