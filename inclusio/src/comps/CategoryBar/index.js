@@ -103,15 +103,45 @@ var fakeDpt = [
 ]
 
 const CategoryBar = ({categories, onFilter, onAll}) => {
+    const [Cats, setCats] = useState([]);
+    const [Page, setPage] = useState(0);
+    const NumItems = 4;
+    var Num = Page + 1;
+    var arr = categories.slice(0,3);
 
+    const GetCats = () => {
+        setCats(arr);
+    }
+
+    const Next = () =>{
+        setPage(Num);
+        if(Page >= categories.length/4){
+            console.log(Page)
+            setPage(0)
+            setCats(
+                categories.slice(NumItems*(Num-1), NumItems*Num)
+            )
+        }else{
+            setCats(
+                categories.slice(NumItems*(Num-1), NumItems*Num)
+            )
+        }
+    }
+
+    useEffect(()=>{
+        GetCats()
+    },[])
 
     return <CategoryCont>
             <CategorySet>
                 <CategoryTabs onClick={onAll}>All</CategoryTabs>
-                {categories && categories.map(o=><CategoryTabs onClick={()=>{
+                {Cats && Cats.map(o=><CategoryTabs onClick={()=>{
                     onFilter(o)
                 }}>{o}</CategoryTabs>)}
             </CategorySet>
+            <ArrowCont onClick={()=>{
+                Next()
+            }}/>
         </CategoryCont>
 }
 
