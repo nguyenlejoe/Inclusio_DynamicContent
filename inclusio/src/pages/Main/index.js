@@ -16,12 +16,9 @@ const Main = () => {
     let categories = Cats.map((member) => member)
     let uniqueCats = [...new Set(categories)];
 
-    console.log('cats',uniqueCats)
-
     const HandleMembers = async() => {
         let resp = await axios.get("http://localhost:8080/api/members");
         setMembers(...[resp.data.members])
-        console.log('all',MemberList)
         FilterCategory('All')
     }
 
@@ -41,11 +38,9 @@ const Main = () => {
         if(dpt !== "All"){
             let resp = await axios.get(`http://localhost:8080/api/members/filter/${dpt}`);
             setFilter(...[resp.data.members])
-            console.log(Filtered)
         } else if(dpt === 'All'){
             let resp = await axios.get(`http://localhost:8080/api/members/filter/All`);
             setFilter(...[resp.data.members])
-            console.log("Help",Filtered)
         }
     }
 
