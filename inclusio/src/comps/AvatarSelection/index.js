@@ -25,7 +25,7 @@ justify-content: center;
 `;
 
 const AvatarIcon = styled.div`
-background-image: ${props => props.avatar ? props.avatar : "url('/butterfly.svg')"};
+background-image:url(${props => props.avatar ? props.avatar : '/butterfly.svg'});
 width: 70%;
 height: 70%;
 background-size: contain;
@@ -211,9 +211,9 @@ background-position:center;
 `;
 
 
-const AvatarSelection = () => {
+const AvatarSelection = ({newImg}) => {
 
-    const [selectedAvatar, setSelectedAvatar] = useState("url('/butterfly.svg')");
+    const [selectedAvatar, setSelectedAvatar] = useState('/butterfly.svg');
     const [active1, setActive1] = useState("solid 3px transparent")
     const [active2, setActive2] = useState("solid 3px transparent")
     const [active3, setActive3] = useState("solid 3px transparent")
@@ -221,6 +221,7 @@ const AvatarSelection = () => {
     const [active5, setActive5] = useState("solid 3px transparent")
     const [active6, setActive6] = useState("solid 3px transparent")
 
+    newImg(selectedAvatar)
 
 
 
@@ -238,30 +239,29 @@ const AvatarSelection = () => {
     if(n === 1){
         AvatarReset()
         setActive1("solid 3px #FF7F11")
-        setSelectedAvatar("url('/butterfly.svg')")
+        setSelectedAvatar('/butterfly.svg')
     } else if(n === 2){
         AvatarReset()
         setActive2("solid 3px #FF7F11")
-        setSelectedAvatar("url('/dolphin.svg')")
+        setSelectedAvatar('/dolphin.svg')
     } else if(n === 3){
         AvatarReset()
         setActive3("solid 3px #FF7F11")
-        setSelectedAvatar("url('/dog.svg')")
+        setSelectedAvatar('/dog.svg')
     } else if(n === 4){
         AvatarReset()
         setActive4("solid 3px #FF7F11")
-        setSelectedAvatar("url('/bear.svg')")
+        setSelectedAvatar('/bear.svg')
     } else if(n === 5){
         AvatarReset()
         setActive5("solid 3px #FF7F11")
-        setSelectedAvatar("url('/rabbit.svg')")
+        setSelectedAvatar('/rabbit.svg')
     } else if(n === 6){
         AvatarReset()
         setActive6("solid 3px #FF7F11")
-        setSelectedAvatar("url('/squirrel.svg')")
-    } 
-
-
+        setSelectedAvatar('/squirrel.svg')
+    }
+    newImg(selectedAvatar)
 }
 
     return <Container>

@@ -27,6 +27,11 @@ const EditMember = (props) => {
         console.log("new member", resp);
     }
 
+    const HandleImg = (img) => {
+        setImg(img);
+        console.log('img',img)
+    }
+
     const HandleStatus = (statusUpdate) =>{
         setStatus(statusUpdate);
         console.log(status)
@@ -46,7 +51,7 @@ const EditMember = (props) => {
                 </div>
             </div>
             
-            <AvatarSelection></AvatarSelection>
+            <AvatarSelection newImg={HandleImg}></AvatarSelection>
 
             <div className="statusTag">
                 <DropDown onStatus={HandleStatus}/>
