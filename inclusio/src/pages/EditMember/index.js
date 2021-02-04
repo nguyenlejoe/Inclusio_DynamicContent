@@ -74,7 +74,7 @@ const EditMember = (props) => {
             </div>
             <div className="saveButton"> 
             
-            <Button path={{pathname: '/'}} onClick={()=>{
+            <Button path={{pathname: '/Home'}} onClick={()=>{
                     onSave(id, img, name, pos, dep, spec, status)
                 }}
                 buttonText= "Save Changes"

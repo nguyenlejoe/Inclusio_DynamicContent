@@ -68,7 +68,7 @@ const AddMember = () => {
             </div>
             <div className="saveButton"> 
             
-            <Button path={{ pathname:'/'}} onClick={()=>{
+            <Button path={{ pathname:'/Home'}} onClick={()=>{
                     onSave(img, name, pos, dep, spec, status)
                 }}
                 buttonText= "Save Changes"
