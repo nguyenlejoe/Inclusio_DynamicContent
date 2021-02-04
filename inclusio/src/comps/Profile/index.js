@@ -144,7 +144,7 @@ let tmpMember = [
 const Profile = ({members, onDelete}) => {
     const [current, setCurrent] = useState(null);
     const [z, setZ] = useState(null);
-
+                                        
     const HandleClicked = (id)=>{
         if(current === id){
             setZ(-2)
@@ -159,6 +159,7 @@ const Profile = ({members, onDelete}) => {
     }
     return (
         <CompContainer>
+            {/* Map members from array passed through the main */}
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
@@ -177,12 +178,14 @@ const Profile = ({members, onDelete}) => {
                     </Content>
                     <Divider/>
                 </ProfileCont>
+                {/* Use link to remember which member us being clicked and bring data to next page */}
                 <Link style={{ textDecoration: 'none'}} to={{ pathname: "/EditMember", state: {o} }}>
                     <Edit
                         right={current === o.id ? '0px' : '100px'}>
                             <img src={"edit.svg"}/>
                     </Edit>
                 </Link>
+                {/* Bring ID of member clicked back to the main page for delete function */}
                 <Bin onClick={()=>{
                     onDelete(o.id)
                 }}
