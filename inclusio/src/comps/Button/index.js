@@ -24,9 +24,9 @@ cursor:pointer;
 }
 `;
 
-const Button = ({width, height,buttonText, bgcolor, border, color, hovercolor, hoverborder, path, onClick}) => {
+const Button = ({width, height,buttonText, bgcolor, color, hovercolor, hoverborder, path, onClick}) => {
     return <Link to={path}>
-    <Container width={width} height={height} bgcolor={bgcolor} border={border} onClick={onClick} color={color} hovercolor={hovercolor} hoverborder={hoverborder}>{buttonText}</Container>
+    <Container width={width} height={height} bgcolor={bgcolor} onClick={onClick} color={color} hovercolor={hovercolor} hoverborder={hoverborder}>{buttonText}</Container>
     </Link>
 }
 
@@ -35,10 +35,9 @@ width: null,
 height: null,
 buttonText: "Button",
 bgcolor: "#056571",
-border: "",
 color: "white",
 hovercolor: "#056571",
-hoverborder: "#056571"
+hoverborder: "solid #056571 3px"
 }
 
 export default Button;

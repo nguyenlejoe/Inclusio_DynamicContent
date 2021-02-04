@@ -36,7 +36,7 @@ const AddMember = () => {
     return(
         <div className="AddPage">
             <div className="Header">
-                    <Link to="/">
+                    <Link to="/Home">
                     <img src="/Back.svg" className="backImage"></img>
                 </Link>
                 <div className="title">

@@ -46,7 +46,7 @@ const EditMember = (props) => {
     return(
         <div className="EditPage">
             <div className="Header">
-                <Link to="/">
+                <Link to="/Home">
                     <img src="/Back.svg" className="backImage"></img>
                 </Link>
                 <div className="title">
