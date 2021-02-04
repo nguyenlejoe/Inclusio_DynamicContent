@@ -5,12 +5,13 @@ import StatusTag from 'comps/StatusTag';
 import Button from 'comps/Button';
 import DropDown from 'comps/DropDown';
 import axios from 'axios';
+import AvatarSelection from 'comps/AvatarSelection'
 
 import {Link} from 'react-router-dom';
 
 const AddMember = () => {
 
-    const [img, setImg] = useState("");
+    const [img, setImg] = useState("/butterfly.svg");
     const [name, setName] = useState("");
     const [pos, setPos] = useState("");
     const [dep, setDep] = useState("");
@@ -20,6 +21,11 @@ const AddMember = () => {
     const onSave = async (img, name, pos, dep, spec, status) => {
         var resp = await axios.post("http://localhost:8080/api/members", {img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
         console.log("new member", resp);
+    }
+
+    const HandleImg = (img) => {
+        setImg(img);
+        console.log('img',img)
     }
 
     const HandleStatus = (statusUpdate) =>{
@@ -38,8 +44,13 @@ const AddMember = () => {
                 </div>
             </div>
 
-                <StatusTag statusText={status}/>
+            <AvatarSelection newImg={HandleImg}></AvatarSelection>
+
+            <div className="statusTag">
                 <DropDown onStatus={HandleStatus}/>
+                <StatusTag statusText={status}/>
+            </div>
+                
 
             <div className="TasksBox">
                 <Input type='text' header={'Name'} placeholder={'Jon Doe'} onChange={(e)=>{

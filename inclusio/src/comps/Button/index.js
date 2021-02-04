@@ -9,7 +9,7 @@ height: ${props=>props.height ? props.height : "53px"};
 border-radius: 100px;
 border: ${props=>props.border ? props.border : "none"};
 color: white;
-transition: 0.6s;
+transition: 0.3s;
 border: solid #056571 3px;
 cursor:pointer;
 
@@ -17,10 +17,8 @@ cursor:pointer;
     background: none;
     border: solid #056571 3px;
     color: #056571;
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
-
-
   :focus {
     outline: 0;
 }

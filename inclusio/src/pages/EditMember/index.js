@@ -6,6 +6,7 @@ import Button from 'comps/Button';
 import DropDown from 'comps/DropDown';
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import AvatarSelection from 'comps/AvatarSelection'
 
 const EditMember = (props) => {
 
@@ -26,6 +27,11 @@ const EditMember = (props) => {
         console.log("new member", resp);
     }
 
+    const HandleImg = (img) => {
+        setImg(img);
+        console.log('img',img)
+    }
+
     const HandleStatus = (statusUpdate) =>{
         setStatus(statusUpdate);
         console.log(status)
@@ -44,9 +50,13 @@ const EditMember = (props) => {
                     <h2>Edit Member</h2>
                 </div>
             </div>
+            
+            <AvatarSelection newImg={HandleImg}></AvatarSelection>
 
-                <StatusTag statusText={status}/>
+            <div className="statusTag">
                 <DropDown onStatus={HandleStatus}/>
+                <StatusTag statusText={status}/>
+            </div>
 
             <div className="TasksBox">
                 <Input type='text' header={'Name'} placeholder={member.name} onChange={(e)=>{
