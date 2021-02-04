@@ -1,0 +1,46 @@
+.PageCont {
+    width: 100vw;
+    height: 100vh;
+    background-color: #056571;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.LogoCont {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100vw;
+    height: 30vh;
+    padding-top: 100px;
+}
+
+.ButtonCont{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 50vh;
+    padding-top: 100px;
+}
+
+.Buttons {
+    margin-top: 15px;
+}
+
+.Bubbles1 {
+    width: 20%;
+    position: absolute;
+    top: 3%;
+    left: 5%;
+}
+
+.Bubbles2 {
+    width: 20%;
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+}
