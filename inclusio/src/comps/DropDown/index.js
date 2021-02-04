@@ -11,6 +11,7 @@ justify-content: center;
 align-items: center;
 cursor:pointer;
 margin: 10px;
+transition: 0.4s;
 `;
 
 const Text = styled.div`
@@ -43,8 +44,7 @@ flex-direction: column;
 margin-left: 10px;
 position:absolute;
 z-index:1;
-transition: 0.4s;
-
+transition: 0.5s;
 
 `;
 
