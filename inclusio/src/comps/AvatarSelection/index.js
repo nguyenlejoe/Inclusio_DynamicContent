@@ -262,7 +262,6 @@ const AvatarSelection = ({newImg}) => {
         setSelectedAvatar('/squirrel.svg')
     }
     newImg(selectedAvatar)
-
 }
 
     return <Container>
