@@ -118,7 +118,9 @@ const CategoryBar = ({categories, onFilter, onAll}) => {
     return <CategoryCont>
             <CategorySet>
                 <CategoryTabs onClick={onAll}>All</CategoryTabs>
+                {/* Map categories for top bar with array passed through from the main */}
                 {Cats && Cats.map(o=><CategoryTabs onClick={()=>{
+                    // Pass the department for filter function on the main
                     onFilter(o)
                 }}>{o}</CategoryTabs>)}
             </CategorySet>

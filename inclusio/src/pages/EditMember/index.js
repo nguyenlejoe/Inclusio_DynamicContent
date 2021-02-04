@@ -21,17 +21,20 @@ const EditMember = (props) => {
     const [spec, setSpec] = useState(member.dep);
     const [status, setStatus] = useState(member.status);
 
+    //Edit Member
     const onSave = async (id, img, name, pos, dep, spec, status) => {
         console.log(id, img, name, pos, dep, spec, status)
         var resp = await axios.put(`http://localhost:8080/api/members/${id}`, {id:id, img:img, name:name, pos:pos, dep:dep, spec:spec, status:status}); 
         console.log("new member", resp);
     }
 
+    //Set Img
     const HandleImg = (img) => {
         setImg(img);
         console.log('img',img)
     }
 
+    //Set Status
     const HandleStatus = (statusUpdate) =>{
         setStatus(statusUpdate);
         console.log(status)
