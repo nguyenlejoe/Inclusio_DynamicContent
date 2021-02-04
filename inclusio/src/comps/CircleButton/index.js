@@ -12,6 +12,16 @@ border: none;
 background-image:url("/plus.svg");
 background-position:center;
 background-repeat:no-repeat;
+transition: transform .2s;
+cursor:pointer;
+
+&:hover {
+    transform: scale(1.05);
+}
+:focus {
+    outline: 0;
+}
+
 `;
 
 const CircleBox = styled.div`
