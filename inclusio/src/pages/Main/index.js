@@ -31,7 +31,6 @@ const Main = () => {
     const DeleteMember = async(id) => {
         let resp = await axios.delete(`http://localhost:8080/api/members/${id}`);
         HandleMembers()
-        console.log(resp)
     }
 
     const FilterCategory = async(dpt) => {
@@ -48,13 +47,9 @@ const Main = () => {
         if(name !== ""){
             let resp = await axios.get(`http://localhost:8080/api/members/name/${name}`);
             setFilter(...[resp.data.members])
-            console.log(Filtered)
-            console.log(name)
         } else {
-            console.log(name)
             let resp = await axios.get(`http://localhost:8080/api/members/name/All`);
             setFilter(...[resp.data.members])
-            console.log("Help",Filtered)
         }
     }
 
