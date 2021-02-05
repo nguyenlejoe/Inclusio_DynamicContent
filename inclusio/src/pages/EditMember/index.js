@@ -62,16 +62,16 @@ const EditMember = (props) => {
             </div>
 
             <div className="TasksBox">
-                <Input type='text' header={'Name'} placeholder={member.name} onChange={(e)=>{
+                <Input type='text' value={member.name} header={'Name'} placeholder={member.name} onChange={(e)=>{
                     setName(e.target.value)
                 }}/>
-                <Input type='text' header={'Position'} placeholder={member.pos} onChange={(e)=>{
+                <Input type='text' value={member.pos} header={'Position'} placeholder={member.pos} onChange={(e)=>{
                     setPos(e.target.value)
                 }}/>
-                <Input type='text' header={'Department'} placeholder={member.dep} onChange={(e)=>{
+                <Input type='text' value={member.dep} header={'Department'} placeholder={member.dep} onChange={(e)=>{
                     setDep(e.target.value)
                 }}/>
-                <Input  type='text' header={'Specialization'} placeholder={member.spec} onChange={(e)=>{
+                <Input  type='text' value={member.spec} header={'Specialization'} placeholder={member.spec} onChange={(e)=>{
                     setSpec(e.target.value)
                 }}/>
             </div>
