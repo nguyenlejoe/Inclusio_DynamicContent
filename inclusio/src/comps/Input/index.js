@@ -30,10 +30,10 @@ const InputBox = styled.input`
     }
 `;
 
-const Input = ({type, placeholder, header, onChange}) => {
+const Input = ({type, placeholder, header, onChange, value}) => {
     return <InputCont>
     <Label>{header}</Label>
-    <InputBox type={type} placeholder={placeholder} onChange={onChange}/>
+    <InputBox defaultValue={value} type={type} placeholder={placeholder} onChange={onChange}/>
     </InputCont>
     
 }
@@ -41,7 +41,8 @@ const Input = ({type, placeholder, header, onChange}) => {
 Input.defaultProps = {
     type: "text",
     placeholder: "Placeholder", 
-    header: "Task Name"
+    header: "Task Name",
+    value:""
 }
 
 export default Input;
