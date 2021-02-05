@@ -37,7 +37,6 @@ const Main = () => {
     const DeleteMember = async(id) => {
         let resp = await axios.delete(`http://localhost:8080/api/members/${id}`);
         HandleMembers()
-        console.log(resp)
     }
 
     //Filter members by category
@@ -65,11 +64,10 @@ const Main = () => {
             console.log(Filtered)
             console.log(name)
         //If search is empty, display all members
+
         } else {
-            console.log(name)
             let resp = await axios.get(`http://localhost:8080/api/members/name/All`);
             setFilter(...[resp.data.members])
-            console.log("Help",Filtered)
         }
     }
 
