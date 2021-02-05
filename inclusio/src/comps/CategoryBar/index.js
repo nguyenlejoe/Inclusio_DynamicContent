@@ -15,20 +15,27 @@ const CategoryCont = styled.div`
 
 const ArrowCont = styled.div`
     margin-bottom:-4px;
-    width:10px;
-    height:10px;
+    width:15px;
+    height:15px;
     display:flex;
     position:relative;
     right:5px;
     background-size:contain;
     background-repeat:no-repeat;
     background-image:url(/arrow.png);
+    cursor:pointer;
+
+    &:hover {
+        transform: scale(1.15);
+    }
+
 `;
 
 const CategorySet = styled.div`
     display:flex;
     width:100%;
     justify-content:space-around;
+    
 `;
 
 const CategoryTabs = styled.div`
@@ -41,6 +48,9 @@ const CategoryTabs = styled.div`
     min-width:10%;
     position:relative;
     top:3px;
+    transition: .2s;
+    cursor:pointer;
+    
 
     &:hover{
         border-bottom: 3px solid #056571;
@@ -116,7 +126,9 @@ const CategoryBar = ({categories, onFilter, onAll}) => {
     return <CategoryCont>
             <CategorySet>
                 <CategoryTabs onClick={onAll}>All</CategoryTabs>
+                {/* Map categories for top bar with array passed through from the main */}
                 {Cats && Cats.map(o=><CategoryTabs onClick={()=>{
+                    // Pass the department for filter function on the main
                     onFilter(o)
                 }}>{o}</CategoryTabs>)}
             </CategorySet>

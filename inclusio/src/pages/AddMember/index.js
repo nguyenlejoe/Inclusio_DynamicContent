@@ -36,7 +36,7 @@ const AddMember = () => {
     return(
         <div className="AddPage">
             <div className="Header">
-                    <Link to="/">
+                    <Link to="/Home">
                     <img src="/Back.svg" className="backImage"></img>
                 </Link>
                 <div className="title">
@@ -68,7 +68,7 @@ const AddMember = () => {
             </div>
             <div className="saveButton"> 
             
-            <Button path={{ pathname:'/'}} onClick={()=>{
+            <Button path={{ pathname:'/Home'}} onClick={()=>{
                     onSave(img, name, pos, dep, spec, status)
                 }}
                 buttonText= "Save Changes"

@@ -36,14 +36,12 @@ padding:15px 40px 15px 15px ;
 `;
 
     const Avatar = styled.div`
-    height:75px;
-    width:75px;
-    border-radius: 50%;
-    background-color: #ccc;
+    height: 50px;
+    width: 50px;
     background-image:url(${props=>props.bgimg ? props.bgimg : "/user.png"});
     background-size:cover;
     background-repeat: no-repeat;
-    background-position:center;
+    background-position: center;
     `;
 
     const Info = styled.div`
@@ -110,6 +108,16 @@ z-index:${props=>props.z ? props.z : '-2'};
 cursor:pointer;
 `;
 
+const AvatarCont = styled.div`
+height:75px;
+width:75px;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 100%;
+background-color: #DAF1D9;
+`;
+
 //Default member
 let tmpMember = [
     {
@@ -144,7 +152,7 @@ let tmpMember = [
 const Profile = ({members, onDelete}) => {
     const [current, setCurrent] = useState(null);
     const [z, setZ] = useState(null);
-
+                                        
     const HandleClicked = (id)=>{
         if(current === id){
             setZ(-2)
@@ -159,10 +167,13 @@ const Profile = ({members, onDelete}) => {
     }
     return (
         <CompContainer>
+            {/* Map members from array passed through the main */}
             {members && members.map(o=> <Container left={current === o.id ? '-200px' : '0px'}>
                 <ProfileCont>
                     <Content>
-                        <Avatar bgimg={o.img}/>
+                        <AvatarCont>
+                            <Avatar bgimg={o.img}/>
+                        </AvatarCont>
                         <Info>
                             <h3>{o.name}</h3>
                             <span><p>{o.name}</p></span>
@@ -177,12 +188,14 @@ const Profile = ({members, onDelete}) => {
                     </Content>
                     <Divider/>
                 </ProfileCont>
+                {/* Use link to remember which member us being clicked and bring data to next page */}
                 <Link style={{ textDecoration: 'none'}} to={{ pathname: "/EditMember", state: {o} }}>
                     <Edit
                         right={current === o.id ? '0px' : '100px'}>
                             <img src={"edit.svg"}/>
                     </Edit>
                 </Link>
+                {/* Bring ID of member clicked back to the main page for delete function */}
                 <Bin onClick={()=>{
                     onDelete(o.id)
                 }}

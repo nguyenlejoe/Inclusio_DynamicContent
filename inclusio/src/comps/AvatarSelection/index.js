@@ -67,6 +67,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 transition: all 0.3s;
+cursor:pointer;
 `;
 
 const Avatar2 = styled.div`
@@ -80,6 +81,7 @@ justify-content: center;
 align-items: center;
 border: ${props => props.active ? props.active : "solid 3px rgba(255, 255, 255,.5)"};
 transition: all 0.3s;
+cursor:pointer;
 `;
 
 const Avatar3 = styled.div`
@@ -93,6 +95,7 @@ justify-content: center;
 align-items: center;
 border: ${props => props.active ? props.active : "solid 3px rgba(255, 255, 255,.5)"};
 transition: all 0.3s;
+cursor:pointer;
 
 `;
 
@@ -107,7 +110,7 @@ justify-content: center;
 align-items: center;
 border: ${props => props.active ? props.active : "solid 3px rgba(255, 255, 255,.5)"};
 transition: all 0.3s;
-
+cursor:pointer;
 
 `;
 
@@ -122,6 +125,7 @@ justify-content: center;
 align-items: center;
 border: ${props => props.active ? props.active : "solid 3px rgba(255, 255, 255,.5)"};
 transition: all 0.3s;
+cursor:pointer;
 
 `;
 
@@ -135,7 +139,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 border: ${props => props.active ? props.active : "solid 3px rgba(255, 255, 255,.5)"};
-transition: all 0.3s;
+transition: 0.2s;
+cursor:pointer;
 
 `;
 
