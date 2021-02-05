@@ -49,6 +49,7 @@ const CategoryTabs = styled.div`
     position:relative;
     top:3px;
     transition: .2s;
+    cursor:pointer;
     
 
     &:hover{
