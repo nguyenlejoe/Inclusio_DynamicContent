@@ -14,7 +14,7 @@ const Main = () => {
     const [Filtered, setFilter, searchFilter] = useState([])
 
     //Grab all categories and find unique ones
-    let categories = Cats.map((member) => member)
+    let categories = Cats.map((member) => member.dep)
     let uniqueCats = [...new Set(categories)];
 
     //Grab all members from database
